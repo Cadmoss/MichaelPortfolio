@@ -769,6 +769,10 @@ main {
   padding: 40px 20px 20px;
 }
 
+.footer {
+  padding-bottom: 5rem; /* prevents overlap with chatbot */
+}
+
             * {
             margin: 0;
             padding: 0;
