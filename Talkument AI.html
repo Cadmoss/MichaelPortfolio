@@ -1,0 +1,319 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Talkument AI</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<style>
+    body {
+        background-color: rgb(205, 202, 245);
+        font-family: 'Poppins', sans-serif;
+        margin: 0;
+        padding: 0;
+        color: #333;
+    }
+
+    /* Header */
+    header {
+        background-color: #110622;
+        color: white;
+        padding: 15px 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    }
+    header h1 {
+        font-size: 1.5rem;
+        margin: 0;
+    }
+    header a {
+        color: white;
+        text-decoration: none;
+        background-color: #231e68;
+        padding: 8px 15px;
+        border-radius: 6px;
+        transition: background-color 0.3s;
+    }
+    header a:hover {
+        background-color: #0a0f4b;
+    }
+
+    /* Layout for top section */
+    .top-section {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        max-width: 1100px;
+        margin: 30px auto 10px auto;
+        padding: 0 20px;
+    }
+
+    /* Carousel */
+    .carousel {
+        flex: 1 1 60%;
+        position: relative;
+        height: 300px;
+        overflow: hidden;
+        border-radius: 8px;
+    }
+    .carousel img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+    }
+    .carousel img.active {
+        opacity: 1;
+    }
+
+    /* Carousel dots */
+    .dots {
+        text-align: center;
+        margin-top: 8px;
+    }
+    .dot {
+        height: 10px;
+        width: 10px;
+        margin: 0 4px;
+        background-color: #bbb;
+        border-radius: 50%;
+        display: inline-block;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    .dot.active {
+        background-color: #151670;
+    }
+
+    /* Video */
+    .video-container {
+        flex: 1 1 35%;
+    }
+    .video-container iframe {
+        width: 100%;
+        height: 300px;
+        border-radius: 8px;
+    }
+
+    .video-container iframe {
+    width: 100%;
+    height: 300px; /* fixed height */
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+    /* Second row: link + notes on left, UI images on right */
+    .below-section {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    /* Left: link + notes */
+    .left-column {
+        flex: 1 1 60%;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+    .link-section a {
+        color: #281763;
+        text-decoration: none;
+        font-weight: 600;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+    }
+    .link-section a:hover {
+        text-decoration: underline;
+    }
+    .link-section svg {
+        width: 18px;
+        height: 18px;
+        fill: #4a90e2;
+    }
+    .notes {
+        background: #f9f9f9;
+        padding: 12px;
+        border-radius: 8px;
+        font-size: 0.95rem;
+        line-height: 1.5;
+    }
+
+    /* Right: UI images */
+    .ui-images {
+        flex: 1 1 35%;
+    }
+    .ui-images img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+        object-fit: cover;
+        margin-bottom: 10px;
+    }
+
+    /* Full width section */
+    .full-width-section {
+        max-width: 1100px;
+        margin: 20px auto;
+        padding: 0 20px;
+    }
+
+    @media (max-width: 768px) {
+    .top-section, .below-section {
+        flex-direction: column;
+    }
+
+    /* Bigger carousel on mobile */
+    .carousel {
+        height: 60vh; /* about 60% of screen height, responsive */
+    }
+
+    /* Make video a bit bigger too */
+    .video-container iframe {
+        height: 300px;
+    }
+
+    /* Reduce UI images size on mobile */
+    .ui-images img {
+        max-height: 250px;
+        object-fit: contain; /* so they don’t crop strangely */
+    }
+}
+
+    footer {
+    background-color: #110622;
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    font-size: 0.9rem;
+    margin-top: 30px;
+}
+
+</style>
+</head>
+<body>
+
+<header>
+    <h1>Talkument AI</h1>
+    <a href="index.html">Home</a>
+</header>
+
+<!-- Top row -->
+<div class="top-section">
+    <!-- Carousel -->
+    <div class="carousel">
+        <img src="images/10.PNG" class="active" alt="Image 1">
+        <img src="images/20.PNG" alt="Image 2">
+        <img src="images/30.PNG" alt="Image 3">
+        <div class="dots"></div>
+    </div>
+
+<div class="video-container">
+    <iframe 
+        src="https://www.youtube.com/embed/Gk8PQkNOoF8" 
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope" 
+        style="width:100%; height:300px; border-radius:8px;">
+    </iframe>
+</div>
+</div>
+<!-- Second row -->
+<div class="below-section">
+    <!-- Left: link + notes -->
+    <div class="left-column">
+        <div class="link-section">
+            <a href="https://jade-zuccutto-09270c.netlify.app/" target="_blank">
+                check it out 
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                    <path d="M12.293 2.293a1 1 0 011.414 0L19 7.586V8a1 1 0 01-1 1h-1v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6H2a1 1 0 01-1-1v-.414l5.293-5.293a1 1 0 011.414 0L12 4.586l.293-.293zM5 9v6h10V9h-2v2H7V9H5z"/>
+                </svg>
+            </a>
+        </div>
+        <div class="notes">
+            <h2>The Spark of Innovation: Tackling the Data Deluge</h2>
+            <p>Once upon a time in the bustling world of data analysis, I found myself drowning in a sea of information. As a data analyst, my days were filled with endless scrolling through dense PDFs, parsing cumbersome CSVs, and transcribing key points from YouTube videos to uncover hidden insights. The real-world problem? Time inefficiency and mental fatigue. Extracting actionable knowledge from documents often meant hours of manual labour, switching between tools, and risking overlooked details, especially when deadlines loomed and datasets grew exponentially. 
+                Why did this matter? In a data-driven era, where businesses rely on quick decisions from reports, research papers, or educational videos, the gap between raw data and usable intelligence is widening. I envisioned a solution: an intuitive platform where users could "talk" to their documents, asking questions in natural language and getting instant, context-aware responses. Thus, Talkument AI was born, a tool powered by AI agents and automation to democratize document interaction, saving precious time and turning overwhelming data into conversational wisdom. 
+                The "why" behind it? To empower analysts like me to focus on strategy and innovation, not drudgery, ultimately boosting productivity in fields like market research, compliance reviews, and content analysis.</p>
+
+                <h3>Building the Bridge: From Upload to Insightful Dialogue</h3>
+                <p>Our story's hero, Talkument AI, begins its journey at the gateway, a sleek login screen that welcomes users back to a world of intelligent document processing. As seen in the first image, it's a simple yet secure portal with fields for email and password, a "Sign In" button, and options for password recovery or signing up. This entry point ensures only authorized users access their personal data hubs, setting the stage for seamless interactions.</p>
+                <p>Behind the scenes, the magic unfolds through n8n. This powerful open-source automation platform orchestrates the backend workflows like a masterful conductor, illustrating how the system handles diverse inputs with precision. It all starts with webhooks, triggers that activate when a user uploads a file or sends a chat message. For document uploads, the flow branches intelligently, a "Switch" node detects the file type (PDF, CSV, TXT), then extracts fields automatically. Text is pulled from PDFs or CSVs, and if it's a YouTube video, a dedicated path kicks in with a
+                     "RapidAPI HTTP Request" to fetch the transcript via GET from APIs like those on youtube.com. The extracted content is combined into a payload, checked with an "If" node for errors (flagging issues in red), and then enriched, embeddings are generated using OpenAI models for semantic understanding, stored in a Supabase Vector Store for fast retrieval, and loaded via default data loaders.</p>
+                     
+        </div>
+    </div>
+
+    <!-- Right: UI images -->
+    <div class="ui-images">
+        <img src="images/Talkument AI 2.PNG" alt="UI Preview 1">
+        <img src="images/Talkument AI.PNG" alt="UI Preview 2">
+    </div>
+</div>
+
+<!-- Additional info -->
+<div class="full-width-section">
+    <p>When a user wants to chat, another webhook listens for messages, routing them to an "AI Agent" node powered by OpenChat models with memory for context retention. Fields are edited automatically if needed, and responses are crafted by querying the vector store, pulling relevant embeddings, documents, or transcripts, and sent back via webhook. This setup allows parallel processing: for instance, a YouTube workflow would create a new row in the database, get row data, and embed it in under a minute, ensuring real-time progress tracking. Error handling is built-in, with error handling mechanisms and loops for retries, making the system robust.</p>
+    <p>On the frontend, the second image showcases the "File Upload Hub," the heart of user interaction. Here, users drag-and-drop or choose files in TXT, PDF, or CSV formats, with a 10MB limit per file for efficiency. A "History" button lets them revisit past uploads. At the same time, the vibrant "YouTube Transcript Extractor" section stands out in red, users paste a video URL (like youtube.com or youtu.be), hit "Extract Transcript," and the system pulls, saves, and embeds the transcript. Once uploaded, an AI agent springs to life: users can chat directly about the content, asking questions such as "Summarise the key findings in this PDF" or 
+    "What does the transcript say about market trends?" The agent draws from the embedded data in Supabase, providing accurate, cited responses. Plus, transcripts can be downloaded for offline use, closing the loop from input to output.</p>
+    <h3>The Triumph of Transformation: Empowering Everyday Heroes</h3>
+    <p>In the end, Talkument AI emerges as a game-changer, transforming solitary data struggles into collaborative conversations. No more silos of information, users now upload a report, query its depths effortlessly, or extract a video's essence without watching hours of content. As a data analyst, this project solves my core pain points: accelerating insight extraction, reducing errors from manual transcription, and enabling scalable analysis for teams. The purpose shines through: to bridge the human-AI divide, making advanced tools accessible so anyone can unlock document potential without coding expertise. 
+        Imagine a world where analysts reclaim hours for creative problem-solving, businesses make faster decisions, and learning from videos becomes instantaneous. Talkument AI isn't just an app; it's a catalyst for efficiency, proving that with smart automation like n8n and AI agents, we can converse with data as naturally as with a colleague. And so, the story continues, advancing toward more sophisticated automation in the role of a data analyst.</p>
+
+
+</div>
+
+<script>
+    const images = document.querySelectorAll('.carousel img');
+    const dotsContainer = document.querySelector('.dots');
+    let currentIndex = 0;
+    let interval;
+
+    // Create dots
+    images.forEach((_, i) => {
+        const dot = document.createElement('span');
+        dot.classList.add('dot');
+        if (i === 0) dot.classList.add('active');
+        dot.addEventListener('click', () => {
+            showSlide(i);
+            resetInterval();
+        });
+        dotsContainer.appendChild(dot);
+    });
+
+    const dots = document.querySelectorAll('.dot');
+
+    function showSlide(index) {
+        images[currentIndex].classList.remove('active');
+        dots[currentIndex].classList.remove('active');
+        currentIndex = index;
+        images[currentIndex].classList.add('active');
+        dots[currentIndex].classList.add('active');
+    }
+
+    function nextSlide() {
+        let nextIndex = (currentIndex + 1) % images.length;
+        showSlide(nextIndex);
+    }
+
+    function startInterval() {
+        interval = setInterval(nextSlide, 8000);
+    }
+
+    function resetInterval() {
+        clearInterval(interval);
+        startInterval();
+    }
+
+    startInterval();
+</script>
+<footer>
+    &copy; 2025 Michael Afolayan
+</footer>
+</body>
+</html>
