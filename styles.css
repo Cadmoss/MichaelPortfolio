@@ -750,40 +750,34 @@ body {
   transform: translateY(-2px);
 }
 
-/* Add spacing between timeline items */
-.timeline-item {
-  margin-bottom: 40px; /* adjust value as needed (30–60px works well) */
+/* Background Section */
+/* ---- Spacing between experiences ---- */
+.background .timeline-item + .timeline-item {
+  margin-top: 40px;            /* space between consecutive items */
 }
 
-/* Timeline content card */
-.timeline-content {
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  padding: 20px; /* ensures text doesn't touch edges */
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.05); /* subtle background for readability */
+/* If your timeline wrapper is a column flex/container, you can use gap instead: */
+/* .background .timeline { display: flex; flex-direction: column; gap: 40px; } */
+
+
+/* ---- Headings: bold white (override previous dark rule) ---- */
+.background .timeline-content h3,
+.background .timeline-content h2 {
+  color: #fff !important;
+  font-weight: 700 !important;
 }
 
-/* Make job title bold white */
-.timeline-content h3 {
-  color: #ffffff;
-  font-weight: 700;
-  margin-bottom: 0.5rem;
-}
-
-/* Dates (keep accent color) */
-.timeline-date {
-  color: #D95838;
-  font-weight: 600;
-  font-size: 0.95rem;
-  display: block;
-  margin-bottom: 0.75rem;
-}
-
-/* Paragraph text */
-.timeline-content p {
+/* Optional: make paragraphs a bit brighter for readability */
+.background .timeline-content p {
   color: rgba(255, 255, 255, 0.9);
-  line-height: 1.6;
+}
+
+/* Optional: add subtle divider + inner breathing room */
+.background .timeline-item {
+  padding-block: 12px;
+}
+.background .timeline-item:not(:last-child) {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
 }
 
 /* About Section */
