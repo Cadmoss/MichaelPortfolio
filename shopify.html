@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Shopify Sales Analysis Power BI Dashboard</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: linear-gradient(135deg, #e8f5e8 0%, #d4f1d4 25%, #c8ecc8 50%, #bde7bd 75%, #b2e2b2 100%);
+      background-size: 400% 400%;
+      animation: gradientShift 20s ease infinite;
+      transition: all 0.3s ease;
+      line-height: 1.6;
+      color: #2d384b;
+      position: relative;
+      min-height: 100vh;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(circle at 20% 80%, rgba(4, 167, 85, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(9, 83, 37, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(114, 235, 178, 0.06) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #095325 0%, #0a5d2b 50%, #0c6730 100%);
+      color: white;
+      padding: 40px 30px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(9, 83, 37, 0.3);
+      z-index: 1;
+    }
+
+    .header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(circle at 30% 70%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 70% 30%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .header-top {
+      display: flex;
+      justify-content: flex-start;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .home-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      background: linear-gradient(135deg, #04a755 0%, #059862 100%);
+      color: white;
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 12px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(4, 167, 85, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .home-button:hover {
+      background: linear-gradient(135deg, #059862 0%, #04a755 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(4, 167, 85, 0.4);
+    }
+
+    .header h1 {
+      margin: 0;
+      font-size: 3rem;
+      font-weight: 700;
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      position: relative;
+      z-index: 2;
+      background: linear-gradient(135deg, #ffffff 0%, #f0fff4 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .header p {
+      font-size: 1.2rem;
+      margin-top: 10px;
+      opacity: 0.9;
+      position: relative;
+      z-index: 2;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .embed-box {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+      margin-bottom: 50px;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .embed-box:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.2);
+    }
+
+    .embed-box iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+      border-radius: 20px;
+    }
+
+    .content-section {
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(20px);
+      border-radius: 24px;
+      padding: 40px;
+      margin: 40px 0;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .content-section:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.12);
+    }
+
+    .content-section h2 {
+      color: #095325;
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 30px;
+      text-align: center;
+      position: relative;
+      padding-bottom: 20px;
+    }
+
+    .content-section h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(135deg, #04a755 0%, #059862 100%);
+      border-radius: 2px;
+    }
+
+    .notes h3 {
+      color: #095325;
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin: 40px 0 20px 0;
+      position: relative;
+      padding-left: 20px;
+    }
+
+    .notes h3::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 4px;
+      height: 24px;
+      background: linear-gradient(135deg, #04a755 0%, #059862 100%);
+      border-radius: 2px;
+    }
+
+    .notes ul {
+      margin-left: 20px;
+      padding-left: 20px;
+    }
+
+    .notes ul li {
+      margin-bottom: 15px;
+      line-height: 1.7;
+      position: relative;
+      padding-left: 10px;
+    }
+
+    .notes ul li::marker {
+      color: #04a755;
+    }
+
+    .notes p {
+      margin-bottom: 20px;
+      line-height: 1.7;
+      font-size: 1.05rem;
+    }
+
+    .responsive-chart {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 30px auto;
+      border-radius: 16px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      transition: all 0.4s ease;
+      border: 3px solid rgba(255, 255, 255, 0.8);
+    }
+
+    .responsive-chart:hover {
+      transform: scale(1.02);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+    }
+
+    .responsive-chart.zoomed {
+      transform: scale(2.5);
+      z-index: 999;
+      position: relative;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3);
+    }
+
+    @media (max-width: 768px) {
+      .responsive-chart.zoomed {
+        transform: scale(1.5);
+      }
+    }
+
+    .fun-box {
+      margin-top: 40px;
+      padding: 30px;
+      background: linear-gradient(135deg, #02240a 0%, #0a3d1a 100%);
+      border-radius: 20px;
+      font-size: 1.05rem;
+      line-height: 1.6;
+      color: #f0fff4;
+      box-shadow: 0 15px 40px rgba(2, 36, 10, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .toggle-theme {
+      margin: 40px auto;
+      text-align: center;
+    }
+
+    .toggle-theme button {
+      padding: 15px 30px;
+      border: none;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #04a755 0%, #059862 100%);
+      color: white;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 25px rgba(4, 167, 85, 0.3);
+    }
+
+    .toggle-theme button:hover {
+      background: linear-gradient(135deg, #059862 0%, #04a755 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 35px rgba(4, 167, 85, 0.4);
+    }
+
+    .link-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, #095325 0%, #0a5d2b 100%);
+      color: white;
+      padding: 15px 25px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.05rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 25px rgba(9, 83, 37, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .link-button:hover {
+      background: linear-gradient(135deg, #0a5d2b 0%, #095325 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 35px rgba(9, 83, 37, 0.4);
+    }
+
+    .pdf-button {
+      background: linear-gradient(135deg, #04a755 0%, #059862 100%);
+      box-shadow: 0 8px 25px rgba(4, 167, 85, 0.3);
+    }
+
+    .pdf-button:hover {
+      background: linear-gradient(135deg, #059862 0%, #04a755 100%);
+      box-shadow: 0 12px 35px rgba(4, 167, 85, 0.4);
+    }
+
+    /* Dark Mode Styles */
+    .dark-mode {
+      background: linear-gradient(135deg, #1a202c 0%, #2d3748 25%, #4a5568 50%, #2d3748 75%, #1a202c 100%);
+      color: #e2e8f0;
+    }
+
+    .dark-mode::before {
+      background: 
+        radial-gradient(circle at 20% 80%, rgba(4, 167, 85, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(9, 83, 37, 0.12) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(114, 235, 178, 0.08) 0%, transparent 50%);
+    }
+
+    .dark-mode .header {
+      background: linear-gradient(135deg, #056d42 0%, #065a38 50%, #074d2e 100%);
+    }
+
+    .dark-mode .content-section {
+      background: rgba(45, 55, 72, 0.9);
+      color: #e2e8f0;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .dark-mode .fun-box {
+      background: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+      color: #e2e8f0;
+    }
+
+    .dark-mode .toggle-theme button {
+      background: linear-gradient(135deg, #055f35 0%, #04a755 100%);
+    }
+
+    .dark-mode .notes h3 {
+      color: #72ebb2;
+    }
+
+    .dark-mode .content-section h2 {
+      color: #72ebb2;
+    }
+
+    footer {
+      background: linear-gradient(135deg, #095325 0%, #0a5d2b 100%);
+      color: #fff;
+      text-align: center;
+      padding: 40px 20px;
+      margin-top: 80px;
+      font-size: 1rem;
+      line-height: 1.8;
+      position: relative;
+      overflow: hidden;
+    }
+
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(circle at 30% 70%, rgba(255, 255, 255, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 70% 30%, rgba(255, 255, 255, 0.03) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    footer p {
+      margin: 8px 0;
+      position: relative;
+      z-index: 2;
+    }
+
+    footer strong {
+      color: #72ebb2;
+      font-weight: 700;
+    }
+
+    footer a {
+      color: #72ebb2;
+      text-decoration: none;
+      font-weight: 600;
+      margin: 0 10px;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    footer a:hover {
+      color: #fff;
+      transform: translateY(-1px);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .header h1 {
+        font-size: 2.2rem;
+      }
+      
+      .container {
+        padding: 20px 15px;
+      }
+      
+      .content-section {
+        padding: 25px;
+      }
+      
+      .content-section h2 {
+        font-size: 2rem;
+      }
+    }
+
+    /* Loading Animation */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-in {
+      animation: fadeInUp 0.8s ease forwards;
+    }
+
+    /* Smooth scrolling */
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+</head>
+<body>
+
+<div class="header fade-in">
+  <div class="header-top">
+    <a href="index.html" class="home-button">
+      HOME
+    </a>
+  </div>
+  <h1>Shopify Sales Analysis</h1>
+  <p>Explore trends, insights & KPIs with Power BI</p>
+</div>
+
+<div class="container">
+
+  <!-- Power BI Embed -->
+  <div class="embed-box fade-in">
+    <iframe title="Shopify Power BI Report"
+      src="https://app.powerbi.com/reportEmbed?reportId=f6f2fb96-b05c-416c-8f78-8f1e933610dd&autoAuth=true&ctid=79401934-75b9-4f0a-b2e1-6bc24af8c9c9"
+      allowFullScreen="true">
+    </iframe>
+  </div>
+
+  <!-- Power BI Direct Link -->
+  <div style="text-align: center; margin-top: 20px;" class="fade-in">
+    <a href="https://app.powerbi.com/reportEmbed?reportId=f6f2fb96-b05c-416c-8f78-8f1e933610dd&autoAuth=true&ctid=79401934-75b9-4f0a-b2e1-6bc24af8c9c9&actionBarEnabled=true"
+       target="_blank"
+       class="link-button">
+      🔗 Open in Power BI
+    </a>
+  </div>
+
+  <!-- Toggle Theme Button -->
+  <div class="toggle-theme fade-in">
+    <button onclick="toggleTheme()">🌙 Toggle Dark Mode</button>
+  </div>
+
+  <!-- YouTube Video Embed -->
+  <div class="embed-box fade-in">
+    <iframe title="Shopify Sales Presentation Video"
+      src="https://www.youtube.com/embed/-srrQ4TQU64"
+      allowfullscreen>
+    </iframe>
+  </div>
+
+  <!-- Notes Section -->
+  <section class="content-section fade-in">
+    <h2>Shopify Sales Report: Unveiling the Data Story</h2>
+    <div class="notes">
+
+      <h3>INSIGHT ENGINE</h3>
+      <p>
+        Imagine stepping into the bustling world of an e-commerce giant, where every transaction tells a story of customer behavior, sales trends, and regional preferences. This report dives into a six-day snapshot of dummy data, crafted for practice purposes using DAX measures, to uncover the heartbeat of our Shopify store. The data, sourced from a simulated dataset, offers a glimpse into transaction performance, customer habits, and geographic insights, all processed through a custom-built dashboard. Let's embark on this journey to reveal what drives our business.
+      </p>
+
+      <h3>WHAT IS SHOPIFY?</h3>
+      <p>
+        Shopify is an easy-to-use e-commerce platform that enables individuals to sell products online and in person. Whether you're a small business owner starting or a large brand looking to grow, Shopify provides the tools you need to build your online store, manage your products, take payments, and track orders all in one place. It's designed to make running an online business simple and flexible, allowing sellers to focus more on their customers and less on the technical aspects.
+      </p>
+
+      <h3>PROJECT AIM AND KPI REQUIREMENTS</h3>
+      <p>
+        The goal of this project is to analyze Shopify sales data in Power BI, revealing actionable insights into transaction performance, customer purchasing behaviour, and long-term customer value. Through an interactive dashboard, the aim is to enable stakeholders to spot patterns in revenue generation, customer retention, and engagement trends, empowering data-driven decisions that align with the robust sales figures, loyal customer base, and regional strengths highlighted in my analysis.
+      </p>
+      <ul>
+        <li>Transactions Performance: This section focuses on evaluating the overall health and effectiveness of sales operations by tracking <strong>Net Sales</strong>, <strong>Total Quantity</strong>, and <strong>Net Average Order Value</strong>.</li>
+        <li>Customer Purchase Behaviour: This is understanding how customers interact with the business. We want to know the <strong>Total Customers, Single Order Customers, and Repeat Customers.</strong></li>
+        <li>Retention and Value: This is to evaluate long-term growth and customer values such as <strong>Lifetime Value (LTV), Repeat Rate, and Purchase Frequency.</strong></li>
+      </ul>
+      <p><strong>CHARTS REQUIREMENTS</strong></p>
+      <ul>
+        <li>Regional Overview</li>
+        <li>Sales Trend Overtime</li>
+        <li>Gateway Payment Method</li>
+        <li>Product Type</li>
+        <li>Dedicated page to display detailed data</li>
+      </ul>
+
+      <h3>DATA DICTIONARY</h3>
+      <ul>
+        <li><b>Admin GraphQL API ID:</b> This is a globally unique identifier utilized by systems that implement GraphQL APIs. It enables accurate retrieval of specific records, such as orders or products within a backend system. This ID is typically not human-readable and is intended for programmatic use.</li>
+        <li><b>Order Number:</b> This is a unique, often sequential number or code assigned to each customer order. It facilitates order tracking, reference, and support inquiries, and is commonly displayed in confirmation emails or invoices (e.g., #12345).</li>
+        <li><b>Billing Address City:</b> The city specified in the customer's billing address during checkout or registration. It is used for purposes such as tax calculation, fraud prevention, and maintaining accurate records.</li>
+        <li><b>Billing Address Country:</b> The country associated with the billing address. It can be helpful in tax rules, payment gateway processing, and regional business reporting.</li>
+        <li><b>Billing Address First Name:</b> The first name of the person associated with the billing address. Often required for processing payments and generating invoices.</li>
+        <li><b>Billing Address Last Name:</b> The last name (surname) of the person on the billing address. Combined with the first name, it provides full identification.</li>
+        <li><b>Billing Address Province:</b> The province, state, or region as per the billing address. For example, "California". This is often required for tax calculations and regional reporting.</li>
+        <li><b>Billing Address Zip:</b> The postal code (ZIP code) of the billing address. Used in shipping and tax estimation, and sometimes in fraud prevention by validating card transactions.</li>
+        <li><b>CITY:</b> Likely a redundant or duplicate field of "Billing Address City," but it could also be intended for a shipping city or a manually entered override field. Needs clarification or cleanup in the dataset.</li>
+        <li><b>Currency:</b> The type of currency used in the transaction, represented in ISO format (e.g., USD for US Dollars, EUR for Euros). It indicates the financial context in which the prices are recorded.</li>
+        <li><b>Customer ID:</b> A system-generated unique identifier for a customer. Used to link orders, communications, preferences, and order history to a specific customer.</li>
+        <li><b>Invoice Date:</b> The date the invoice was created or finalized for the transaction. This can be important for accounting, tax reporting, and determining payment terms.</li>
+        <li><b>Gateway:</b> The payment processing service used to complete the transaction. Examples include Stripe, PayPal, Razorpay, etc. This helps in reconciling payments and understanding transaction channels.</li>
+        <li><b>Product ID:</b> A unique identifier for the product being purchased. This is used internally to track inventory, pricing, and product performance across sales.</li>
+        <li><b>Product Type:</b> A classification or category of the product. For instance, it could be "Software," "Clothing," "Electronics," etc. Helps in reporting and filtering products.</li>
+        <li><b>Variant ID:</b> Products may come in multiple variants (e.g., different sizes or colors). The Variant ID uniquely identifies a specific version of the product.</li>
+        <li><b>Quantity:</b> The number of units of the product purchased in the order. Important for inventory management and sales volume analysis.</li>
+        <li><b>Subtotal Price:</b> The total cost of all items before applying taxes, shipping charges, or discounts. It reflects the base cost of the order.</li>
+        <li><b>Total Price USD:</b> The total price paid, including taxes and possibly shipping, converted to USD (if the transaction was in another currency). Useful for standardizing financial reporting across currencies.</li>
+        <li><b>Total Tax:</b> The total amount of tax (like VAT or GST) applied to the order. This is important for compliance and reporting in many regions.</li>
+      </ul>
+
+      <h3>Unravelling the insights</h3>
+      <p>The transaction performance paints an impressive picture, with net sales reaching $4,180,874 across 7,534 total quantities, averaging a net order value of $562.6. This hefty revenue underscores a thriving marketplace where each sale reflects customer trust and product appeal. The standout figure here is the net sales, a testament to the store's ability to generate significant income in just six days.</p>
+      <img src="images/Shopify 1.PNG" alt="Product Performance" class="responsive-chart" />
+      <p>Our customer base is a vibrant mix of 4,431 total customers, with 2,392 being single-order shoppers and 2,039 repeat buyers. The repeat rate of 46% and a purchase frequency of 1.68 indicate a loyal core, although the moderate frequency suggests room for encouraging more frequent purchases. The lifetime value of $ 943.60 per customer stands out as a key metric, highlighting the long-term potential of our repeat clientele.</p>
+      <p>Geographically, the story unfolds across the United States, with a regional overview revealing hotspots like <b>Washington, D.C., Houston, and New York</b> leading in <b>Net Sales, Total Quantity, and Total Customers.</b> Meanwhile, <b>Washington, D.C., Houston, and Las Vegas</b> are leading in terms of <b>repeat customers.</b></p>
+      <img src="images/Shopify 2.PNG" alt="Product Performance" class="responsive-chart" />
+      <p>The map, dotted with green clusters, shows a dense concentration in the Southeast and West, suggesting these areas are prime markets. Washington's top ranking stands out, hinting at a regional sales powerhouse worth exploring further.</p>
+      <p>From this analysis, the overall trend indicates a fluctuating yet upward trajectory, with daily quantities recently reaching a peak of 1,158 units. While this shows strong and growing demand, the intermittent dips in earlier periods suggest that seasonal volatility still plays a role. It's something we'll need to monitor and potentially address with better forecasting or promotional smoothing strategies.</p>
+      <img src="images/Shopify 3.PNG" alt="Product Performance" class="responsive-chart" />
+      <p>A particularly notable highlight is that net sales reached an impressive peak of $643,793, and the total customer count hit a high of 1,048. These figures reflect both the expanding reach of our brand and the effectiveness of our recent marketing and conversion efforts. The hourly performance, as visualised in the column chart, also provides valuable insights. There's a steady ramp-up in activity starting at 8 AM, peaking and fluctuating between 1 PM and 5 PM, and then declining noticeably after 5 PM. This rhythm suggests key engagement windows where we focus on customer communications, promotions, or even schedule staff more effectively to optimise support and fulfilment.</p>
+      <p>Regarding payment methods, Shopify Payments remains the preferred choice, accounting for 420 transactions, or 57.5%. This aligns with customer expectations for seamless and secure checkouts. Gift cards follow with 327 transactions (44.8%), which is a significant number and suggests a strong pull from promotional incentives or gifting behaviour.</p>
+      <img src="images/Shopify4.PNG" alt="Product Performance" class="responsive-chart" />
+      <p>It might be worth exploring how to further capitalize on this trend, possibly through more targeted campaigns or seasonal bundles.</p>
+      <p>On the product front, running shoes continue to dominate, with 2,659 units sold. This clear lead confirms that the product category resonates strongly with our audience and reinforces the need to prioritize it in inventory planning, advertising, and potential upselling strategies. Other product categories trail significantly, so doubling down on this top performer could yield even greater returns.</p>
+      <img src="images/Shopify 5.PNG" alt="Product Performance" class="responsive-chart" />
+
+      <h3>Recommendations</h3>
+      <p><strong>Scale Inventory and Marketing to Match Demand Growth</strong></p>
+      <p>The Total Quantity Trend Over Time chart shows a consistent upward trend in demand. To capitalize on this growth, consider increasing inventory levels and scaling marketing efforts, especially during peak periods of activity.</p>
+      
+      <p><strong>Boost Customer Retention through Loyalty and Re-Engagement</strong></p>
+      <p>With a repeat purchase rate of just 4% and an average purchase frequency of 1.68, customer loyalty appears low. Implementing loyalty programs, personalized re-engagement campaigns and post-purchase incentives can encourage repeat shopping behaviour.</p>
+      
+      <p><strong>Tailor Marketing to High-Performing Regions</strong></p>
+      <p>Cities such as Houston, New York, and Washington, D.C, are generating high sales volumes. Targeted regional marketing, localised promotions, and enhanced distribution strategies in these areas can help strengthen market presence and drive further growth.</p>
+      
+      <p><strong>Enhance Checkout Experience with Preferred Payment Options</strong></p>
+      <p>Shopify Payments lead with 57.84% of transactions, suggesting a strong customer preference. Ensuring a smooth Shopify payment experience and optimising support for other popular methods, such as PayPal, may improve conversion rates and reduce cart abandonment.</p>
+      
+      <p><strong>Focus on Best-Selling Product Categories</strong></p>
+      <p>Running Shoes and Tennis Shoes are the top-performing product types. Doubling down on these categories through new variations, bundles, or targeted ads can help drive incremental sales and solidify their role as core revenue drivers.</p>
+
+      <!-- PDF Link -->
+      <div style="text-align: center; margin-top: 40px;">
+        <a href="Shopify Sales Report.pdf" target="_blank" class="pdf-button">
+          View PDF Presentation
+        </a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script>
+  function toggleTheme() {
+    document.body.classList.toggle('dark-mode');
+    const button = document.querySelector('.toggle-theme button');
+    if (document.body.classList.contains('dark-mode')) {
+      button.textContent = '☀️ Toggle Light Mode';
+    } else {
+      button.textContent = '🌙 Toggle Dark Mode';
+    }
+  }
+
+  // Image zoom functionality
+  document.querySelectorAll('.responsive-chart').forEach(img => {
+    img.addEventListener('click', () => {
+      img.classList.toggle('zoomed');
+    });
+  });
+
+  // Fade in animation on scroll
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('fade-in');
+      }
+    });
+  }, observerOptions);
+
+  // Observe all elements that should fade in
+  document.addEventListener('DOMContentLoaded', () => {
+    const elementsToObserve = document.querySelectorAll('.embed-box, .content-section, .toggle-theme');
+    elementsToObserve.forEach(el => {
+      observer.observe(el);
+    });
+  });
+</script>
+
+<footer>
+  <p>© 2025 Shopify Sales Report | Designed & Developed by <strong>Michael Afolayan</strong></p>
+  <p>
+    <a href="mailto:michaelcadmoss@gmail.com">Contact</a> | 
+    <a href="https://www.linkedin.com/in/michael-afolayann" target="_blank">LinkedIn</a>
+  </p>
+</footer>
+
+</body>
+</html>
