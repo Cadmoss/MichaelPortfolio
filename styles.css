@@ -751,32 +751,11 @@ body {
 }
 
 /* Background Section */
+/* Background Section */
 .background {
     padding: 60px 20px;
     background: linear-gradient(135deg, #2B1473 0%, #6D44A6 35%, #77A1D9 70%, #D95838 100%);
     color: white;
-}
-
-.timeline {
-    max-width: 800px;
-    margin: 0 auto;
-    position: relative;
-}
-
-.timeline::before {
-    content: '';
-    position: absolute;
-    left: 50%;
-    top: 0;
-    bottom: 0;
-    width: 2px;
-    background: rgba(255, 255, 255, 0.3);
-    transform: translateX(-50%);
-}
-
-.timeline-item {
-    display: flex;
-    margin-bottom: 3rem;
     position: relative;
 }
 
@@ -835,6 +814,7 @@ body {
     color: rgba(255, 255, 255, 0.85);
     line-height: 1.6;
 }
+
 
 /* Contact Section */
 .contact {
