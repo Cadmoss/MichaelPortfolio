@@ -144,67 +144,80 @@ document.addEventListener("click", function (event) {
 });
 
 // Handle chatbot form submission
-document
-  .querySelector(".chatbot-form")
-  .addEventListener("submit", function (e) {
-    e.preventDefault();
+document.querySelector(".chatbot-form").addEventListener("submit", function (e) {
+  e.preventDefault();
 
-    // Get form data
-    const formData = new FormData(this);
-    const submitBtn = this.querySelector(".chatbot-submit");
-    const originalText = submitBtn.textContent;
+  // Get form elements
+  const form = this;
+  const submitBtn = form.querySelector(".chatbot-submit");
+  const messageInput = form.querySelector('input[name="message"]') || form.querySelector('textarea[name="message"]');
+  const emailInput = form.querySelector('input[name="email"]');
+  const chatMessages = document.querySelector("#chat-messages"); // Adjust selector as needed
+  const originalText = submitBtn.textContent;
 
-    // Show loading state
-    submitBtn.innerHTML = '<span class="loading"></span> Sending...';
-    submitBtn.disabled = true;
+  // Validate elements exist
+  if (!submitBtn || !messageInput || !chatMessages) {
+    console.error("Required elements not found: submitBtn, messageInput, or chatMessages");
+    return;
+  }
 
-    // Submit to Formspree
-    fetch("https://formspree.io/f/xqalpgrk", {
-      method: "POST",
-      body: formData,
-      headers: {
-        Accept: "application/json",
-      },
-    })
-      .then((response) => {
-        if (response.ok) {
-          // Success
-          submitBtn.textContent = "Message Sent!";
-          submitBtn.style.background = "#10b981";
-          this.reset();
+  // Show loading state
+  submitBtn.innerHTML = '<span class="loading"></span> Sending...';
+  submitBtn.disabled = true;
 
-          // Add success message
-          const botMsg = document.createElement("div");
-          botMsg.classList.add("bot-message");
-          botMsg.textContent = email
-            ? "Thanks for your message! I'll follow up with you at " + email + " soon."
-            : "Thanks for your message! I'll get back to you soon.";
-          chatMessages.appendChild(botMsg);
-          chatMessages.scrollTop = chatMessages.scrollHeight;
-          input.value = ""; // Clear message
-          emailInput.value = ""; // Clear email
-          setTimeout(() => {
-            submitBtn.textContent = originalText;
-            submitBtn.style.background = "#2563EB";
-            submitBtn.disabled = false;
-          }, 2000);
-        } else {
-          throw new Error("Network response was not ok");
-        }
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-        submitBtn.textContent = "Error - Try Again";
-        submitBtn.style.background = "#dc2626";
+  // Get form data
+  const formData = new FormData(form);
+  const email = emailInput ? emailInput.value : ""; // Safely get email value
 
+  // Submit to Formspree
+  fetch("https://formspree.io/f/xqalpgrk", {
+    method: "POST",
+    body: formData,
+    headers: {
+      Accept: "application/json",
+    },
+  })
+    .then((response) => {
+      if (response.ok) {
+        // Success
+        submitBtn.textContent = "Message Sent!";
+        submitBtn.style.background = "#10b981";
+        form.reset();
+
+        // Add success message
+        const botMsg = document.createElement("div");
+        botMsg.classList.add("bot-message");
+        botMsg.textContent = email
+          ? `Thanks for your message! I'll follow up with you at ${email} soon.`
+          : "Thanks for your message! I'll get back to you soon.";
+        chatMessages.appendChild(botMsg);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+
+        // Reset button after 2 seconds
         setTimeout(() => {
           submitBtn.textContent = originalText;
           submitBtn.style.background = "#2563EB";
           submitBtn.disabled = false;
-        }, 3000);
-      });
-  });
+        }, 2000);
+      } else {
+        return response.json().then((data) => {
+          throw new Error(data.error || "Formspree response was not ok");
+        });
+      }
+    })
+    .catch((error) => {
+      console.error("Form submission error:", error);
+      submitBtn.textContent = "Error - Try Again";
+      submitBtn.style.background = "#dc2626";
 
+      // Reset button after 3 seconds
+      setTimeout(() => {
+        submitBtn.textContent = originalText;
+        submitBtn.style.background = "#2563EB";
+        submitBtn.disabled = false;
+      }, 3000);
+    });
+});
 // Keyboard navigation for carousels
 document.addEventListener("keydown", function (e) {
   if (e.key === "ArrowLeft") {
