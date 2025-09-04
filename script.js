@@ -191,8 +191,9 @@ if (form) {
           submitBtn.style.background = "#10b981";
           form.reset();
 
+          // ✅ success message styled separately
           const botMsg = document.createElement("div");
-          botMsg.classList.add("bot-message");
+          botMsg.classList.add("bot-message", "success");
           botMsg.textContent = email
             ? `Thanks for your message! I'll follow up with you at ${email} soon.`
             : "Thanks for your message! I'll get back to you soon.";
@@ -213,6 +214,7 @@ if (form) {
         submitBtn.textContent = "Error - Try Again";
         submitBtn.style.background = "#dc2626";
 
+        // ✅ error message styled separately
         const botMsg = document.createElement("div");
         botMsg.classList.add("bot-message", "error");
         botMsg.textContent =
@@ -228,7 +230,6 @@ if (form) {
       });
   });
 }
-
 // Keyboard navigation for carousels
 document.addEventListener("keydown", function (e) {
   if (e.key === "ArrowLeft") {

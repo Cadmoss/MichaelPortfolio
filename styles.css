@@ -1078,6 +1078,24 @@ body {
       border-radius: 16px 16px 0 0;
     }
 
+    .bot-message.success {
+  background: #ecfdf5;        /* light green */
+  color: #065f46;             /* darker green text */
+  border-left: 4px solid #10b981;
+}
+
+.bot-message.error {
+  background: #fef2f2;        /* light red */
+  color: #991b1b;
+  border-left: 4px solid #dc2626;
+}
+
+.bot-message.info {
+  background: #eff6ff;        /* light blue */
+  color: #1e40af;
+  border-left: 4px solid #2563eb;
+}
+
 /* Responsive Design */
 @media (max-width: 1024px) {
   .hero-title {
