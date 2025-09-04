@@ -1,0 +1,310 @@
+// Navigation functionality
+document.addEventListener("DOMContentLoaded", function () {
+  // Mobile navigation toggle
+  const hamburger = document.querySelector(".hamburger");
+  const navMenu = document.querySelector(".nav-menu");
+
+  hamburger.addEventListener("click", function () {
+    navMenu.classList.toggle("active");
+    hamburger.classList.toggle("active");
+  });
+
+  // Close mobile menu when clicking on links
+  document.querySelectorAll(".nav-link").forEach((link) => {
+    link.addEventListener("click", () => {
+      navMenu.classList.remove("active");
+      hamburger.classList.remove("active");
+    });
+  });
+
+  // Smooth scrolling for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener("click", function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute("href"));
+      if (target) {
+        target.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }
+    });
+  });
+
+  // Navbar scroll effect
+  window.addEventListener("scroll", function () {
+    const navbar = document.querySelector(".navbar");
+    if (window.scrollY > 100) {
+      navbar.style.background =
+        "linear-gradient(135deg, rgba(43, 20, 115, 0.98), rgba(109, 68, 166, 0.98))";
+      navbar.style.boxShadow = "0 4px 25px rgba(43, 20, 115, 0.4)";
+    } else {
+      navbar.style.background =
+        "linear-gradient(135deg, rgba(43, 20, 115, 0.95), rgba(109, 68, 166, 0.95))";
+      navbar.style.boxShadow = "0 4px 20px rgba(43, 20, 115, 0.2)";
+    }
+  });
+
+  // Intersection Observer for animations
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: "0px 0px -50px 0px",
+  };
+
+  const observer = new IntersectionObserver(function (entries) {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("fade-in");
+      }
+    });
+  }, observerOptions);
+
+  // Observe elements for animation
+  document
+    .querySelectorAll(".project-card, .timeline-item, .stat-item")
+    .forEach((el) => {
+      observer.observe(el);
+    });
+});
+
+// Carousel functionality
+let currentSlides = {
+  carousel1: 0,
+  carousel2: 0,
+};
+
+function updateCarousel(carouselId) {
+  const carousel = document.getElementById(carouselId);
+  const track = carousel.querySelector(".carousel-track");
+  const slides = carousel.querySelectorAll(".carousel-slide");
+  const slideWidth = 100;
+
+  track.style.transform = `translateX(-${
+    currentSlides[carouselId] * slideWidth
+  }%)`;
+}
+
+function nextSlide(carouselId) {
+  const carousel = document.getElementById(carouselId);
+  const slides = carousel.querySelectorAll(".carousel-slide");
+  const maxSlide = slides.length - 1;
+
+  if (currentSlides[carouselId] >= maxSlide) {
+    currentSlides[carouselId] = 0;
+  } else {
+    currentSlides[carouselId]++;
+  }
+
+  updateCarousel(carouselId);
+}
+
+function previousSlide(carouselId) {
+  const carousel = document.getElementById(carouselId);
+  const slides = carousel.querySelectorAll(".carousel-slide");
+  const maxSlide = slides.length - 1;
+
+  if (currentSlides[carouselId] <= 0) {
+    currentSlides[carouselId] = maxSlide;
+  } else {
+    currentSlides[carouselId]--;
+  }
+
+  updateCarousel(carouselId);
+}
+
+// Auto-play carousel
+function autoPlayCarousels() {
+  setInterval(() => {
+    Object.keys(currentSlides).forEach((carouselId) => {
+      nextSlide(carouselId);
+    });
+  }, 5000);
+}
+
+// Start auto-play after page load
+document.addEventListener("DOMContentLoaded", function () {
+  setTimeout(autoPlayCarousels, 2000);
+});
+
+// Chatbot functionality
+function toggleChatbot() {
+  const chatbot = document.getElementById("chatbot");
+  chatbot.classList.toggle("active");
+}
+
+// Close chatbot when clicking outside
+document.addEventListener("click", function (event) {
+  const chatbot = document.getElementById("chatbot");
+  const chatbotToggle = document.querySelector(".chatbot-toggle");
+  const chatbotContainer = document.querySelector(".chatbot-container");
+
+  if (!chatbotContainer.contains(event.target)) {
+    chatbot.classList.remove("active");
+  }
+});
+
+// Handle chatbot form submission
+document
+  .querySelector(".chatbot-form")
+  .addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    // Get form data
+    const formData = new FormData(this);
+    const submitBtn = this.querySelector(".chatbot-submit");
+    const originalText = submitBtn.textContent;
+
+    // Show loading state
+    submitBtn.innerHTML = '<span class="loading"></span> Sending...';
+    submitBtn.disabled = true;
+
+    // Submit to Formspree
+    fetch("https://formspree.io/f/YOUR_FORM_ID", {
+      method: "POST",
+      body: formData,
+      headers: {
+        Accept: "application/json",
+      },
+    })
+      .then((response) => {
+        if (response.ok) {
+          // Success
+          submitBtn.textContent = "Message Sent!";
+          submitBtn.style.background = "#10b981";
+          this.reset();
+
+          // Add success message
+          const messagesContainer = document.querySelector(".chatbot-messages");
+          const successMessage = document.createElement("div");
+          successMessage.className = "bot-message";
+          successMessage.innerHTML =
+            "<p>Thank you for your message! I'll get back to you soon.</p>";
+          messagesContainer.appendChild(successMessage);
+
+          setTimeout(() => {
+            submitBtn.textContent = originalText;
+            submitBtn.style.background = "#2563EB";
+            submitBtn.disabled = false;
+          }, 2000);
+        } else {
+          throw new Error("Network response was not ok");
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        submitBtn.textContent = "Error - Try Again";
+        submitBtn.style.background = "#dc2626";
+
+        setTimeout(() => {
+          submitBtn.textContent = originalText;
+          submitBtn.style.background = "#2563EB";
+          submitBtn.disabled = false;
+        }, 3000);
+      });
+  });
+
+// Keyboard navigation for carousels
+document.addEventListener("keydown", function (e) {
+  if (e.key === "ArrowLeft") {
+    Object.keys(currentSlides).forEach((carouselId) => {
+      previousSlide(carouselId);
+    });
+  } else if (e.key === "ArrowRight") {
+    Object.keys(currentSlides).forEach((carouselId) => {
+      nextSlide(carouselId);
+    });
+  }
+});
+
+// Touch/swipe support for carousels
+let touchStartX = 0;
+let touchEndX = 0;
+
+document.addEventListener("touchstart", function (e) {
+  touchStartX = e.changedTouches[0].screenX;
+});
+
+document.addEventListener("touchend", function (e) {
+  touchEndX = e.changedTouches[0].screenX;
+  handleSwipe();
+});
+
+function handleSwipe() {
+  const swipeThreshold = 50;
+  const diff = touchStartX - touchEndX;
+
+  if (Math.abs(diff) > swipeThreshold) {
+    if (diff > 0) {
+      // Swipe left - next slide
+      Object.keys(currentSlides).forEach((carouselId) => {
+        nextSlide(carouselId);
+      });
+    } else {
+      // Swipe right - previous slide
+      Object.keys(currentSlides).forEach((carouselId) => {
+        previousSlide(carouselId);
+      });
+    }
+  }
+}
+
+// Project card hover effects
+document.querySelectorAll(".project-card").forEach((card) => {
+  card.addEventListener("mouseenter", function () {
+    this.style.transform = "translateY(-8px) scale(1.02)";
+  });
+
+  card.addEventListener("mouseleave", function () {
+    this.style.transform = "translateY(0) scale(1)";
+  });
+});
+
+// Parallax effect for hero section
+window.addEventListener("scroll", function () {
+  const scrolled = window.pageYOffset;
+  const heroVisual = document.querySelector(".hero-visual");
+  const rate = scrolled * 0.5;
+
+  if (heroVisual) {
+    heroVisual.style.transform = `translateY(${rate}px)`;
+  }
+});
+
+// Form validation
+document.querySelectorAll("form").forEach((form) => {
+  form.addEventListener("submit", function (e) {
+    const inputs = this.querySelectorAll("input[required], textarea[required]");
+    let isValid = true;
+
+    inputs.forEach((input) => {
+      if (!input.value.trim()) {
+        isValid = false;
+        input.style.borderColor = "#dc2626";
+
+        setTimeout(() => {
+          input.style.borderColor = "#e5e7eb";
+        }, 3000);
+      }
+    });
+
+    if (!isValid) {
+      e.preventDefault();
+    }
+  });
+});
+
+// Lazy loading for images
+const imageObserver = new IntersectionObserver((entries, observer) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      const img = entry.target;
+      img.src = img.dataset.src;
+      img.classList.remove("lazy");
+      observer.unobserve(img);
+    }
+  });
+});
+
+document.querySelectorAll("img[data-src]").forEach((img) => {
+  imageObserver.observe(img);
+});

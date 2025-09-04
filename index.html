@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Michael Afolayan - Data Analytics & RPA Portfolio</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="nav-logo">
+          <h2>MICHAEL AFOLAYAN</h2>
+        </div>
+        <div class="nav-menu">
+          <a href="#home" class="nav-link">Home</a>
+          <div class="dropdown">
+            <a href="#projects" class="nav-link dropdown-toggle">
+              Projects <i class="fas fa-chevron-down"></i>
+            </a>
+            <div class="dropdown-menu">
+              <a href="#excel-projects">Excel Projects</a>
+              <a href="#sql-projects">SQL</a>
+              <a href="#powerbi-projects">Power BI</a>
+              <a href="#tableau-projects">Tableau</a>
+              <a href="#python-projects">Python</a>
+              <a href="#automation-projects">Automation</a>
+            </div>
+          </div>
+          <a href="#about" class="nav-link">About</a>
+          <a href="#contact" class="nav-link">Contact</a>
+        </div>
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+      <div class="hero-container">
+        <div class="hero-content">
+          <div class="hero-header">
+            <h1 class="hero-title">MICHAEL AFOLAYAN</h1>
+            <h2 class="hero-subtitle">
+              Data Analytics & Robotic Process Automation Expert
+            </h2>
+          </div>
+
+          <div class="hero-main">
+            <p class="hero-description">
+              I am passionate about transforming raw data into actionable
+              insights. My journey began in data entry at a manufacturing firm,
+              evolving into expertise in Microsoft Office (Advanced Excel with
+              VBA, Word, PowerPoint), Structured Query Language (SQL), Microsoft
+              Power BI, Tableau, Microsoft Fabric, Microsoft Project, and Data
+              Storytelling. Through my portfolio, I showcase projects that
+              demonstrate my ability to extract, clean, analyse and visualise
+              data to drive business decisions. I am eager to learn, tackle
+              complex challenges, and empower organisations with data-driven
+              solutions.
+            </p>
+
+            <div class="hero-headshot">
+              <div class="headshot-container">
+                <img
+                  src="Michael.jpeg"
+                  alt="Michael Afolayan - Data Analytics Expert"
+                  class="headshot-image"
+                />
+                <div class="headshot-overlay">
+                  <div class="headshot-badge">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Data Expert</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="skills-showcase">
+              <div class="skill-pill">Advanced Excel</div>
+              <div class="skill-pill">SQL</div>
+              <div class="skill-pill">Power BI</div>
+              <div class="skill-pill">Tableau</div>
+              <div class="skill-pill">Python</div>
+              <div class="skill-pill">Microsoft Projects</div>
+            </div>
+          </div>
+
+          <div class="hero-footer">
+            <div class="hero-stats">
+              <div class="stat-item">
+                <span class="stat-number">10+</span>
+                <span class="stat-label">Projects</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number">5+</span>
+                <span class="stat-label">Years</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number">90%</span>
+                <span class="stat-label">Efficiency</span>
+              </div>
+            </div>
+
+            <div class="hero-actions">
+              <a href="#projects" class="cta-primary">View My Work</a>
+              <a href="#contact" class="cta-secondary">Get In Touch</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Carousels Section -->
+    <section class="carousels-section">
+      <div class="container">
+        <h2 class="section-title">Featured Work</h2>
+
+        <!-- First Carousel -->
+        <div class="carousel-container">
+          <h3 class="carousel-title">Projects Dashboards</h3>
+          <div class="carousel" id="carousel1">
+            <div class="carousel-track">
+              <div class="carousel-slide">
+                <img src="Call Centre Analysis.PNG" alt="Dashboard" />
+                <div class="slide-caption">Call Centre Analysis</div>
+              </div>
+              <div class="carousel-slide">
+                <img src="Provider.PNG" alt="Dashboard" />
+                <div class="slide-caption">Medical Provider Dashboard</div>
+              </div>
+              <div class="carousel-slide">
+                <img src="Cafe Harm.PNG" alt="Dashboard" />
+                <div class="slide-caption">Cafe Harmony Sales Analysis</div>
+              </div>
+              <div class="carousel-slide">
+                <img src="NYC Analysis.PNG" alt="Dashboard" />
+                <div class="slide-caption">NYC Collision Analysis</div>
+              </div>
+              <div class="carousel-slide">
+                <img src="Details.PNG" alt="Dashboard" />
+                <div class="slide-caption">Details</div>
+              </div>
+            </div>
+            <button
+              class="carousel-btn prev"
+              onclick="previousSlide('carousel1')"
+            >
+              <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="carousel-btn next" onclick="nextSlide('carousel1')">
+              <i class="fas fa-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Second Carousel -->
+        <div class="carousel-container">
+          <h3 class="carousel-title">Automation Solutions</h3>
+          <div class="carousel" id="carousel2">
+            <div class="carousel-track">
+              <div class="carousel-slide">
+                <img src="Agent AI.PNG" alt="Automation" />
+                <div class="slide-caption">N8N Workflow</div>
+              </div>
+              <div class="carousel-slide">
+                <img src="Workforce AI.png" alt="Workforce" />
+                <div class="slide-caption">Workforce AI</div>
+              </div>
+              <div class="carousel-slide">
+                <img src="Talkument AI.png" alt="Automation" />
+                <div class="slide-caption">Talkument AI</div>
+              </div>
+            </div>
+            <button
+              class="carousel-btn prev"
+              onclick="previousSlide('carousel2')"
+            >
+              <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="carousel-btn next" onclick="nextSlide('carousel2')">
+              <i class="fas fa-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+      <div class="container">
+        <h2 class="section-title">My Projects</h2>
+        <div class="projects-grid">
+          <div class="project-card">
+            <img src="Cafe.jpg" alt="Sales Analysis Dashboard" />
+            <div class="project-content">
+              <h3>A strategic Review of Café Harmony's Performance</h3>
+              <p class="project-notes">
+                The Café Harmony Sales Analysis Dashboard provides a
+                comprehensive overview of sales performance, inventory, customer
+                insights, and employee contributions, enabling data-driven
+                decisions to enhance efficiency and profitability.
+              </p>
+              <div class="project-tools">
+                <span class="tool-tag excel"
+                  ><i class="fas fa-file-excel"></i>Excel</span
+                >
+              </div>
+              <a href="#" class="view-project-btn">View Project</a>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <img
+              src="alesia-kazantceva-iYoAPaSPBKI-unsplash.jpg"
+              alt="Inventory Management System"
+            />
+            <div class="project-content">
+              <h3>E-Commerce by the Numbers: Shopify Sales Analysis</h3>
+              <p class="project-notes">
+                I leveraged Power BI to transform Shopify sales data through
+                meticulous cleaning and modelling in Power Query, crafting a
+                robust relational data model. This analysis reveals customer
+                behaviour, retention trends, and regional sales insights,
+                providing actionable recommendations to drive strategic growth.
+              </p>
+              <div class="project-tools">
+                <span class="tool-tag excel"
+                  ><i class="fas fa-file-excel"></i>Excel</span
+                >
+                <span class="tool-tag powerbi"
+                  ><i class="fas fa-chart-bar"></i>Power BI</span
+                >
+              </div>
+              <a href="#" class="view-project-btn">View Project</a>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <img
+              src="online-marketing-hIgeoQjS_iE-unsplash.jpg"
+              alt="Healthcare Economics"
+            />
+            <div class="project-content">
+              <h3>
+                Healthcare Economics: A Comprehensive Review of Medical Metrics
+              </h3>
+              <p class="project-notes">
+                This analysis delivers deep insights into medical metrics,
+                revealing billing trends, provider performance, and regional
+                variations across UK departments, procedures, and cities.
+                Powered by advanced data exploration and visualisation, it
+                drives informed healthcare decisions.
+              </p>
+              <div class="project-tools">
+                <span class="tool-tag excel"
+                  ><i class="fas fa-file-excel"></i>Excel</span
+                >
+                <span class="tool-tag powerbi"
+                  ><i class="fas fa-chart-bar"></i>Power BI</span
+                >
+              </div>
+              <a href="#" class="view-project-btn">View Project</a>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <img
+              src="https://images.pexels.com/photos/8849295/pexels-photo-8849295.jpeg?auto=compress&cs=tinysrgb&w=400"
+              alt="Process Automation Bot"
+            />
+            <div class="project-content">
+              <h3>Process Automation Bot</h3>
+              <p class="project-notes">
+                RPA solution for automating repetitive data entry tasks,
+                reducing processing time from hours to minutes with 99.9%
+                accuracy.
+              </p>
+              <div class="project-tools">
+                <span class="tool-tag python"
+                  ><i class="fab fa-python"></i>Python</span
+                >
+                <span class="tool-tag automation"
+                  ><i class="fas fa-robot"></i>RPA</span
+                >
+              </div>
+              <a href="#" class="view-project-btn">View Project</a>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <img
+              src="https://images.pexels.com/photos/7688336/pexels-photo-7688336.jpeg?auto=compress&cs=tinysrgb&w=400"
+              alt="Project Management Dashboard"
+            />
+            <div class="project-content">
+              <h3>Project Management Dashboard</h3>
+              <p class="project-notes">
+                Comprehensive project tracking solution with resource
+                allocation, timeline management, and progress monitoring for
+                cross-functional teams.
+              </p>
+              <div class="project-tools">
+                <span class="tool-tag msproject"
+                  ><i class="fas fa-project-diagram"></i>MS Project</span
+                >
+                <span class="tool-tag powerbi"
+                  ><i class="fas fa-chart-bar"></i>Power BI</span
+                >
+              </div>
+              <a href="#" class="view-project-btn">View Project</a>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <img
+              src="https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=400"
+              alt="Customer Analytics Platform"
+            />
+            <div class="project-content">
+              <h3>Customer Analytics Platform</h3>
+              <p class="project-notes">
+                Advanced customer segmentation and behavior analysis platform
+                with machine learning insights and predictive modeling
+                capabilities.
+              </p>
+              <div class="project-tools">
+                <span class="tool-tag python"
+                  ><i class="fab fa-python"></i>Python</span
+                >
+                <span class="tool-tag tableau"
+                  ><i class="fas fa-chart-line"></i>Tableau</span
+                >
+              </div>
+              <a href="#" class="view-project-btn">View Project</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section id="about" class="about">
+      <div class="container">
+        <div class="about-content">
+          <div class="about-text">
+            <h2 class="section-title">About Me</h2>
+            <p>
+              I am a dedicated Data Analytics and Robotic Process Automation
+              specialist with a passion for transforming complex data into
+              actionable business insights. With expertise spanning advanced
+              Excel modeling, SQL database management, and cutting-edge
+              visualization tools, I help organizations unlock the full
+              potential of their data assets.
+            </p>
+            <p>
+              My approach combines technical excellence with strategic thinking,
+              ensuring that every analysis not only answers current questions
+              but also uncovers opportunities for future growth and
+              optimization.
+            </p>
+          </div>
+          <div class="about-stats">
+            <div class="stat-item">
+              <h3>10+</h3>
+              <p>Projects Completed</p>
+            </div>
+            <div class="stat-item">
+              <h3>5+</h3>
+              <p>Years Experience</p>
+            </div>
+            <div class="stat-item">
+              <h3>90%</h3>
+              <p>Efficiency Improvement</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Background Section -->
+    <section id="background" class="background">
+      <div class="container">
+        <h2 class="section-title">Background</h2>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <h3>Data Analytics Specialist</h3>
+              <span class="timeline-date">2021 - Present</span>
+              <p>
+                Leading data-driven decision making initiatives, developing
+                comprehensive analytics solutions, and implementing automation
+                processes that have improved operational efficiency across
+                multiple departments.
+              </p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <h3>Business Intelligence Analyst</h3>
+              <span class="timeline-date">2019 - 2021</span>
+              <p>
+                Specialized in creating dynamic dashboards and reports using
+                Power BI and Tableau. Developed automated reporting systems that
+                reduced manual reporting time by 60%.
+              </p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <h3>Data Analyst</h3>
+              <span class="timeline-date">2018 - 2019</span>
+              <p>
+                Focused on data cleaning, analysis, and visualization using
+                advanced Excel techniques and SQL. Built foundational skills in
+                statistical analysis and data modeling.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Disclaimer Section -->
+    <section class="disclaimer">
+      <div class="container">
+        <p>
+          The data used in these projects is entirely fictional or simulated. It
+          has been created solely for learning and demonstration purposes and
+          does not reflect real-world information.
+        </p>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-info">
+            <h3>Michael Afolayan</h3>
+            <p>Data Analytics & RPA Specialist</p>
+          </div>
+          <div class="footer-links">
+            <a href="mailto:michael.afolayan@email.com">
+              <i class="fas fa-envelope"></i>
+            </a>
+            <a href="tel:+15551234567">
+              <i class="fas fa-phone"></i>
+            </a>
+            <a href="https://linkedin.com/in/michaelafolayan" target="_blank">
+              <i class="fab fa-linkedin"></i>
+            </a>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2025 Michael Afolayan. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Chatbot -->
+    <div class="chatbot-container">
+      <div class="chatbot-toggle" onclick="toggleChatbot()">
+        <i class="fas fa-comments"></i>
+      </div>
+      <div class="chatbot" id="chatbot">
+        <div class="chatbot-header">
+          <h4>Let's Connect!</h4>
+          <button class="chatbot-close" onclick="toggleChatbot()">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="chatbot-body">
+          <div class="chatbot-messages">
+            <div class="bot-message">
+              <p>Welcome to my portfolio! 👋</p>
+            </div>
+            <div class="bot-message">
+              <p>
+                Feel free to connect with me on
+                <a
+                  href="https://linkedin.com/in/michaelafolayan"
+                  target="_blank"
+                  >LinkedIn</a
+                >
+                or send me a message below.
+              </p>
+            </div>
+          </div>
+          <form
+            class="chatbot-form"
+            action="https://formspree.io/f/YOUR_FORM_ID"
+            method="POST"
+          >
+            <input type="text" name="name" placeholder="Your Name" required />
+            <input
+              type="email"
+              name="email"
+              placeholder="Your Email (optional for follow-up)"
+            />
+            <textarea
+              name="message"
+              placeholder="Type your message here..."
+              rows="3"
+              required
+            ></textarea>
+            <button type="submit" class="chatbot-submit">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
