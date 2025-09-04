@@ -763,9 +763,10 @@ body {
             transform: translateX(-50%);
             height: 100%;
             width: 4px;
-            background: linear-gradient(to bottom, #22d3ee, #a855f7, #ec4899);
-            border-radius: 2px;
-        }
+            .timeline-content.cyan {
+  background: linear-gradient(135deg, rgba(34, 211, 238, 0.8), rgba(59, 130, 246, 0.8));
+  border-color: rgba(34, 211, 238, 0.9);
+}
 
         .timeline-item {
             position: relative;
