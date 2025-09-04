@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Workforce AI</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<style>
+    body {
+        background-color: rgb(162, 160, 201);
+        font-family: 'Poppins', sans-serif;
+        margin: 0;
+        padding: 0;
+        color: #333;
+    }
+
+    /* Header */
+    header {
+        background-color: #110622;
+        color: white;
+        padding: 15px 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    }
+    header h1 {
+        font-size: 1.5rem;
+        margin: 0;
+    }
+    header a {
+        color: white;
+        text-decoration: none;
+        background-color: #231e68;
+        padding: 8px 15px;
+        border-radius: 6px;
+        transition: background-color 0.3s;
+    }
+    header a:hover {
+        background-color: #0a0f4b;
+    }
+
+    /* Layout for top section */
+    .top-section {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        max-width: 1100px;
+        margin: 30px auto 10px auto;
+        padding: 0 20px;
+    }
+
+    /* Carousel */
+    .carousel {
+        flex: 1 1 60%;
+        position: relative;
+        height: 300px;
+        overflow: hidden;
+        border-radius: 8px;
+    }
+    .carousel img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+    }
+    .carousel img.active {
+        opacity: 1;
+    }
+
+    /* Carousel dots */
+    .dots {
+        text-align: center;
+        margin-top: 8px;
+    }
+    .dot {
+        height: 10px;
+        width: 10px;
+        margin: 0 4px;
+        background-color: #bbb;
+        border-radius: 50%;
+        display: inline-block;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    .dot.active {
+        background-color: #151670;
+    }
+
+    /* Video */
+    .video-container {
+        flex: 1 1 35%;
+    }
+    .video-container iframe {
+        width: 100%;
+        height: 300px;
+        border-radius: 8px;
+    }
+
+    .video-container iframe {
+    width: 100%;
+    height: 300px; /* fixed height */
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+    /* Second row: link + notes on left, UI images on right */
+    .below-section {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    /* Left: link + notes */
+    .left-column {
+        flex: 1 1 60%;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+    .link-section a {
+        color: #281763;
+        text-decoration: none;
+        font-weight: 600;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+    }
+    .link-section a:hover {
+        text-decoration: underline;
+    }
+    .link-section svg {
+        width: 18px;
+        height: 18px;
+        fill: #4a90e2;
+    }
+    .notes {
+        background: #f9f9f9;
+        padding: 12px;
+        border-radius: 8px;
+        font-size: 0.95rem;
+        line-height: 1.5;
+    }
+
+    /* Right: UI images */
+    .ui-images {
+        flex: 1 1 35%;
+    }
+    .ui-images img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+        object-fit: cover;
+        margin-bottom: 10px;
+    }
+
+    /* Full width section */
+    .full-width-section {
+        max-width: 1100px;
+        margin: 20px auto;
+        padding: 0 20px;
+    }
+
+    @media (max-width: 768px) {
+    .top-section, .below-section {
+        flex-direction: column;
+    }
+
+    /* Bigger carousel on mobile */
+    .carousel {
+        height: 60vh; /* about 60% of screen height, responsive */
+    }
+
+    /* Make video a bit bigger too */
+    .video-container iframe {
+        height: 300px;
+    }
+
+    /* Reduce UI images size on mobile */
+    .ui-images img {
+        max-height: 250px;
+        object-fit: contain; /* so they don’t crop strangely */
+    }
+}
+
+    footer {
+    background-color: #110622;
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    font-size: 0.9rem;
+    margin-top: 30px;
+}
+
+</style>
+</head>
+<body>
+
+<header>
+    <h1>Workforce AI</h1>
+    <a href="index.html">Home</a>
+</header>
+
+<!-- Top row -->
+<div class="top-section">
+    <!-- Carousel -->
+    <div class="carousel">
+        <img src="images/Westbrom1.PNG" class="active" alt="Image 1">
+        <img src="Westbrom2.PNG" alt="Image 2">
+        <img src="Westbrom3.PNG" alt="Image 3">
+        <div class="dots"></div>
+    </div>
+
+<div class="video-container">
+    <iframe 
+        src="https://www.youtube.com/embed/" 
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope" 
+        style="width:100%; height:300px; border-radius:8px;">
+    </iframe>
+</div>
+</div>
+<!-- Second row -->
+<div class="below-section">
+    <!-- Left: link + notes -->
+    <div class="left-column">
+        <div class="link-section">
+            <a href="https://wonderful-blini-4458ce.netlify.app/" target="_blank">
+                check it out 
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                    <path d="M12.293 2.293a1 1 0 011.414 0L19 7.586V8a1 1 0 01-1 1h-1v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6H2a1 1 0 01-1-1v-.414l5.293-5.293a1 1 0 011.414 0L12 4.586l.293-.293zM5 9v6h10V9h-2v2H7V9H5z"/>
+                </svg>
+            </a>
+        </div>
+        <div class="notes">
+            <h2>The Story of WorkforceAI: Turning Chaos into Calm in Customer Service</h2>
+            <h3>The Busy Call Center Blues</h3>
+            <p>Imagine a bustling call centre where phones ring non-stop, emails pile up, chats buzz like bees, and social media messages flood in. It's like a wild playground where everyone wants attention at once! But here's the problem I am solving: Managers often guess how many helper agents to schedule, leading to big troubles like customers waiting too long, high abandonment rates, like 7.2% on voice calls, teams feeling overwhelmed, utilisation hitting 89.9% on live chat, or wasting money on extra staff when it's quiet. The reason for WorkforceAI? To fix this chaos by using smart AI and real-time data, so we can predict busy times, plan perfectly, and keep customers happy without breaking the bank. It's all about the "why": In a world where customer service can make or break a business, this dashboard empowers managers to see the future, spot issues early, and make data-driven decisions that save time, money, and smiles.</p>
+             </div>
+            </div>
+
+    <!-- Right: UI images -->
+    <div class="ui-images">
+        <img src="Westbrom4.PNG" alt="UI Preview 1">
+        <img src="Westbrom5.PNG" alt="UI Preview 2">
+    </div>
+</div>
+
+<!-- Additional info -->
+<div class="full-width-section">
+    <h3>Diving into the Dashboard's Magic Tabs, Insights, and Adventures</h3>
+    <p>Now, let's journey through each tab like chapters in our story, uncovering the meaning behind the data, the problems they tackle, and the key insights that light the way.</p>
+    <p><ul><li><b>Dashboard (The Big Picture Overview):</b>This is our story's map, showing overall health like a team's scorecard. Purpose: To give a quick snapshot of performance so managers don't drown in details. <b>Insights:</b> We're at 89.2% service level close but below the 90% target, meaning some customers aren't helped fast enough. Total daily volume is 557, which is under 600, so room to grow. Problem solved: Highlights bottlenecks, like high abandonment in chat, predictive alerts warn of overload, urging us to act before customers leave frustrated.</li>
+    <li><b>Forecasting - The Crystal Ball Chapter:</b>Like a weather forecast for calls, this tab predicts volumes with AI confidence (89% sure!). Purpose: To foresee rushes, like jumping from 198 to 286 calls, so we avoid surprises. <b>Insights:</b> Total predicted volume is 13,389 with +19% accuracy, showing a busier day ahead. Voice calls might spike to 280. Problem solved: Ends blind guessing; instead, we prepare for peaks, reducing wait times and abandonment.</li>
+    <li><b>Staffing Optimisation (The Team Balancing Act):</b>This is the planner's toolkit, calculating ideal staff numbers. Purpose: To match helpers to demand without over- or understaffing. <b>Insights:</b> Gaps like -2 in voice calls (need 28 but scheduled 26) mean we're short, risking overload; email has +1 extra, so reassign them! Problem solved: Fixes inefficiencies, like high utilisation (76.8% overall), by suggesting actions to balance load and save money.</li>
+    <li><b>Real-time Monitoring (The Live Action Thriller):</b>Our heartbeat monitor, updating live from sources like Mitel. Purpose: To watch the action unfold right now, catching issues instantly. <b>Insights:</b> Voice calls have 7.2% abandonment and 86.2% service level, orange warning too low, while email shines at 96.8%. Live chat's 89.9% utilisation screams "overworked!" Problem solved: Spots real-time pain points, like 3.1% chat abandonment, allowing quick fixes to boost satisfaction (currently 4.2/5) before it drops.</li>
+    <li><b>Scenario Planning (The What-If Adventure):</b>Like testing game plans, this compares options. Purpose: To simulate changes and pick the best path for balance. <b>Insights:</b> The Optimised scenario can increase satisfaction to 88.7% (+6.6%). Problem solved: Avoids risky decisions; shows how max service might help more, guiding us to efficient wins.</li>
+    <li><b>Data Sources (The Behind-the-Scenes Foundation):</b>This connects everything, like toy phones linking to real systems, Mitel, Salesforce, Workforce Database, and pretend ones, Data Simulation. Purpose: To ensure data is fresh (refresh every 5-300s) and reliable. <b>Insights:</b> Simulation generates fake data internally for safe testing (e.g., base volumes like 250 voice calls with 5% volatility), while real endpoints like https://api.mitel.co pull live info. Problem solved: Blends real and simulated data to practice without risks, powering accurate forecasts and alerts.</li>
+    </ul></p>
+    <p>Throughout, the "why" shines: Every tab turns raw numbers into actionable stories, data volatility simulates wild days, predictive alerts prevent crises, and insights like low service levels reveal hidden frustrations, all to create smoother operations.</p>
+    <h3>The Happy Ever After – Victory and Vision</h3>
+    <p>In the end, WorkforceAI transforms our call centre from a guessing game into a well-oiled machine, solving core problems like staffing mismatches and customer drop-offs. By weaving real-time insights with smart planning, we've boosted efficiency (e.g., +19% forecast accuracy) and kept satisfaction soaring toward 4.5/5. <b>The true win?</b> Happier customers and teams, proving that with the right data story, we can predict, prepare, and prevail, ready to scale this magic to even bigger adventures!</p>
+
+</div>
+
+<script>
+    const images = document.querySelectorAll('.carousel img');
+    const dotsContainer = document.querySelector('.dots');
+    let currentIndex = 0;
+    let interval;
+
+    // Create dots
+    images.forEach((_, i) => {
+        const dot = document.createElement('span');
+        dot.classList.add('dot');
+        if (i === 0) dot.classList.add('active');
+        dot.addEventListener('click', () => {
+            showSlide(i);
+            resetInterval();
+        });
+        dotsContainer.appendChild(dot);
+    });
+
+    const dots = document.querySelectorAll('.dot');
+
+    function showSlide(index) {
+        images[currentIndex].classList.remove('active');
+        dots[currentIndex].classList.remove('active');
+        currentIndex = index;
+        images[currentIndex].classList.add('active');
+        dots[currentIndex].classList.add('active');
+    }
+
+    function nextSlide() {
+        let nextIndex = (currentIndex + 1) % images.length;
+        showSlide(nextIndex);
+    }
+
+    function startInterval() {
+        interval = setInterval(nextSlide, 8000);
+    }
+
+    function resetInterval() {
+        clearInterval(interval);
+        startInterval();
+    }
+
+    startInterval();
+</script>
+<footer>
+    &copy; 2025 Michael Afolayan
+</footer>
+</body>
+</html>
