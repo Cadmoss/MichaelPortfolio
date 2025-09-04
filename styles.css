@@ -1078,6 +1078,41 @@ body {
       border-radius: 16px 16px 0 0;
     }
 
+    .chatbot-form input,
+.chatbot-form textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  margin-bottom: 0.75rem;
+  font-family: inherit;
+  font-size: 0.9rem;
+  transition: border-color 0.3s ease;
+  box-sizing: border-box;
+}
+
+.chatbot-form input:focus,
+.chatbot-form textarea:focus {
+  outline: none;
+  border-color: #2563eb;
+}
+
+.chatbot-submit {
+  width: 100%;
+  background: #2563eb;
+  color: white;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.chatbot-submit:hover {
+  background: #1d4ed8;
+}
+
     .bot-message.success {
   background: #ecfdf5;        /* light green */
   color: #065f46;             /* darker green text */
