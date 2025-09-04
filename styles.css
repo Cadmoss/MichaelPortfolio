@@ -750,35 +750,171 @@ body {
   transform: translateY(-2px);
 }
 
-/* Background Section */
-/* ---- Spacing between experiences ---- */
-.background .timeline-item + .timeline-item {
-  margin-top: 40px;            /* space between consecutive items */
-}
+/* Work Experience Timeline */
+        .timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
 
-/* If your timeline wrapper is a column flex/container, you can use gap instead: */
-/* .background .timeline { display: flex; flex-direction: column; gap: 40px; } */
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            height: 100%;
+            width: 4px;
+            background: linear-gradient(to bottom, #22d3ee, #a855f7, #ec4899);
+            border-radius: 2px;
+        }
 
+        .timeline-item {
+            position: relative;
+            margin-bottom: 4rem;
+        }
 
-/* ---- Headings: bold white (override previous dark rule) ---- */
-.background .timeline-content h3,
-.background .timeline-content h2 {
-  color: #fff !important;
-  font-weight: 700 !important;
-}
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
 
-/* Optional: make paragraphs a bit brighter for readability */
-.background .timeline-content p {
-  color: rgba(255, 255, 255, 0.9);
-}
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 1.5rem;
+            height: 1.5rem;
+            border-radius: 50%;
+            border: 4px solid white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            z-index: 2;
+        }
 
-/* Optional: add subtle divider + inner breathing room */
-.background .timeline-item {
-  padding-block: 12px;
-}
-.background .timeline-item:not(:last-child) {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
-}
+        .timeline-dot.cyan {
+            background: linear-gradient(45deg, #22d3ee, #3b82f6);
+        }
+
+        .timeline-dot.purple {
+            background: linear-gradient(45deg, #a855f7, #ec4899);
+        }
+
+        .timeline-dot.pink {
+            background: linear-gradient(45deg, #ec4899, #ef4444);
+        }
+
+        .timeline-content {
+            width: calc(50% - 2rem);
+            padding: 2rem;
+            border-radius: 1rem;
+            border: 2px solid;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s;
+        }
+
+        .timeline-content:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-left: auto;
+            text-align: left;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-right: auto;
+            text-align: right;
+        }
+
+        .timeline-content.cyan {
+            background: linear-gradient(135deg, rgba(34, 211, 238, 0.2), rgba(59, 130, 246, 0.2));
+            border-color: rgba(34, 211, 238, 0.3);
+        }
+
+        .timeline-content.purple {
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.2), rgba(236, 72, 153, 0.2));
+            border-color: rgba(168, 85, 247, 0.3);
+        }
+
+        .timeline-content.pink {
+            background: linear-gradient(135deg, rgba(236, 72, 153, 0.2), rgba(239, 68, 68, 0.2));
+            border-color: rgba(236, 72, 153, 0.3);
+        }
+
+        .company-name {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .company-name.cyan { color: #67e8f9; }
+        .company-name.purple { color: #c084fc; }
+        .company-name.pink { color: #f9a8d4; }
+
+        .job-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .job-period {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .job-period.cyan {
+            background: rgba(34, 211, 238, 0.2);
+            color: #67e8f9;
+        }
+
+        .job-period.purple {
+            background: rgba(168, 85, 247, 0.2);
+            color: #c084fc;
+        }
+
+        .job-period.pink {
+            background: rgba(236, 72, 153, 0.2);
+            color: #f9a8d4;
+        }
+
+        .job-location {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 1.5rem;
+        }
+
+        .job-description {
+            space-y: 0.75rem;
+        }
+
+        .job-description-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .job-bullet {
+            width: 0.5rem;
+            height: 0.5rem;
+            border-radius: 50%;
+            margin-top: 0.5rem;
+            flex-shrink: 0;
+        }
+
+        .job-bullet.cyan { background: #22d3ee; }
+        .job-bullet.purple { background: #a855f7; }
+        .job-bullet.pink { background: #ec4899; }
+
+        .job-description p {
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+        }
 
 /* About Section */
 .about {
