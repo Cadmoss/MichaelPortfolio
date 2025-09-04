@@ -913,7 +913,7 @@ body {
         .job-bullet.pink { background: #ec4899; }
 
         .job-description p {
-            color: rgba(0, 0, 0, 0.9);
+            color: rgba(8, 8, 8, 0.9);
             line-height: 1.6;
         }
 
