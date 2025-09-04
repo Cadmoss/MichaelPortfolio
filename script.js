@@ -174,13 +174,15 @@ document
           this.reset();
 
           // Add success message
-          const messagesContainer = document.querySelector(".chatbot-messages");
-          const successMessage = document.createElement("div");
-          successMessage.className = "bot-message";
-          successMessage.innerHTML =
-            "<p>Thank you for your message! I'll get back to you soon.</p>";
-          messagesContainer.appendChild(successMessage);
-
+          const botMsg = document.createElement("div");
+          botMsg.classList.add("bot-message");
+          botMsg.textContent = email
+            ? "Thanks for your message! I'll follow up with you at " + email + " soon."
+            : "Thanks for your message! I'll get back to you soon.";
+          chatMessages.appendChild(botMsg);
+          chatMessages.scrollTop = chatMessages.scrollHeight;
+          input.value = ""; // Clear message
+          emailInput.value = ""; // Clear email
           setTimeout(() => {
             submitBtn.textContent = originalText;
             submitBtn.style.background = "#2563EB";
