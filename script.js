@@ -155,7 +155,6 @@ if (form) {
     const chatMessages = document.querySelector("#chat-messages");
     const originalText = submitBtn.textContent;
 
-    // Validate message
     if (!messageInput.value.trim()) {
       submitBtn.textContent = "Please enter a message";
       submitBtn.style.background = "#dc2626";
@@ -166,15 +165,18 @@ if (form) {
       return;
     }
 
-    // Show loading state
     submitBtn.textContent = "Sending...";
     submitBtn.disabled = true;
 
-    // Collect form data
     const formData = new FormData(form);
     const email = emailInput.value;
 
-    // Submit to Formspree
+    // Debug: log payload
+    console.log("📤 Sending to Formspree:");
+    for (let [key, val] of formData.entries()) {
+      console.log(key, ":", val);
+    }
+
     fetch("https://formspree.io/f/xqalpgrk", {
       method: "POST",
       body: formData,
@@ -182,14 +184,13 @@ if (form) {
     })
       .then(async (response) => {
         const data = await response.json().catch(() => ({}));
-        console.log("Formspree response:", data);
+        console.log("📥 Formspree response:", data);
 
         if (response.ok) {
           submitBtn.textContent = "Message Sent!";
           submitBtn.style.background = "#10b981";
           form.reset();
 
-          // Add chatbot confirmation
           const botMsg = document.createElement("div");
           botMsg.classList.add("bot-message");
           botMsg.textContent = email
@@ -208,13 +209,14 @@ if (form) {
         }
       })
       .catch((error) => {
-        console.error("Form submission error:", error);
+        console.error("🚨 Submission error:", error);
         submitBtn.textContent = "Error - Try Again";
         submitBtn.style.background = "#dc2626";
 
         const botMsg = document.createElement("div");
         botMsg.classList.add("bot-message", "error");
-        botMsg.textContent = "Failed to send message. Please try again.";
+        botMsg.textContent =
+          "Failed to send message. Please check your inputs and try again.";
         chatMessages.appendChild(botMsg);
         chatMessages.scrollTop = chatMessages.scrollHeight;
 
@@ -226,7 +228,6 @@ if (form) {
       });
   });
 }
-
 
 // Keyboard navigation for carousels
 document.addEventListener("keydown", function (e) {

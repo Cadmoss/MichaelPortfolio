@@ -551,7 +551,7 @@
       </div>
     </footer>
 
- !-- Chatbot -->
+<!-- Chatbot -->
 <div class="chatbot-container">
   <div class="chatbot-toggle" onclick="toggleChatbot()">
     <i class="fas fa-comments"></i>
@@ -564,6 +564,7 @@
       </button>
     </div>
     <div class="chatbot-body">
+      <!-- 🔑 Added id="chat-messages" -->
       <div class="chatbot-messages" id="chat-messages">
         <div class="bot-message">
           <p>Welcome to my portfolio! 👋</p>
@@ -581,6 +582,7 @@
         </div>
       </div>
 
+      <!-- 🔑 Removed action + method -->
       <form class="chatbot-form">
         <input type="text" name="name" placeholder="Your Name" required />
         <input
