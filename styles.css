@@ -750,7 +750,8 @@ body {
   transform: translateY(-2px);
 }
 
-{
+
+            * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -850,8 +851,10 @@ body {
             padding: 2rem;
             border-radius: 1rem;
             border: 2px solid;
-            backdrop-filter: blur(10px);
             transition: all 0.3s;
+            /* Ensure background is always visible */
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
 
         .timeline-content:hover {
@@ -870,18 +873,39 @@ body {
         }
 
         .timeline-content.cyan {
-            background: linear-gradient(135deg, rgba(34, 211, 238, 0.2), rgba(59, 130, 246, 0.2));
+            background: linear-gradient(135deg, rgba(34, 211, 238, 0.3), rgba(59, 130, 246, 0.3));
             border-color: rgba(34, 211, 238, 0.3);
+            /* Fallback for browsers that don't support backdrop-filter */
+            background-color: rgba(34, 211, 238, 0.15);
         }
 
         .timeline-content.purple {
-            background: linear-gradient(135deg, rgba(168, 85, 247, 0.2), rgba(236, 72, 153, 0.2));
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.3), rgba(236, 72, 153, 0.3));
             border-color: rgba(168, 85, 247, 0.3);
+            /* Fallback for browsers that don't support backdrop-filter */
+            background-color: rgba(168, 85, 247, 0.15);
         }
 
         .timeline-content.pink {
-            background: linear-gradient(135deg, rgba(236, 72, 153, 0.2), rgba(239, 68, 68, 0.2));
+            background: linear-gradient(135deg, rgba(236, 72, 153, 0.3), rgba(239, 68, 68, 0.3));
             border-color: rgba(236, 72, 153, 0.3);
+            /* Fallback for browsers that don't support backdrop-filter */
+            background-color: rgba(236, 72, 153, 0.15);
+        }
+
+        /* Enhanced fallback for older browsers */
+        @supports not (backdrop-filter: blur(10px)) {
+            .timeline-content.cyan {
+                background: linear-gradient(135deg, rgba(34, 211, 238, 0.4), rgba(59, 130, 246, 0.4));
+            }
+            
+            .timeline-content.purple {
+                background: linear-gradient(135deg, rgba(168, 85, 247, 0.4), rgba(236, 72, 153, 0.4));
+            }
+            
+            .timeline-content.pink {
+                background: linear-gradient(135deg, rgba(236, 72, 153, 0.4), rgba(239, 68, 68, 0.4));
+            }
         }
 
         .company-name {
