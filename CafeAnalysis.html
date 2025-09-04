@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Café Harmony Sales Performance</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #e7e6e2;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+
+  .header {
+  width: 100%;
+  text-align: center;
+  background-color: #1a1918;
+  color: #fff;
+  padding: 40px 20px;
+  border-radius: 0; /* Remove rounded corner */
+  box-sizing: border-box;
+}
+
+    .header h1 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    .home-button {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background-color: #945605;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-weight: 600;
+  text-decoration: none;
+  z-index: 1000;
+}
+
+.home-button:hover {
+  background-color: #cc8418;
+}
+
+   .content-section {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #f3ede6;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.content-section iframe {
+  width: 100%;
+  height: 500px; /* adjust to your preference */
+  max-width: 100%;
+  border-radius: 8px;
+  display: block;
+  margin: 0 auto;
+}
+
+.content-section h2 {
+  font-size: 1.4rem;
+  text-align: center;
+  color: #d38208;
+  margin-bottom: 20px;
+}
+
+    .responsive-chart {
+      max-width: 100%;
+      height: auto;
+      margin: 20px 0;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .responsive-chart.zoomed {
+      transform: scale(2);
+      z-index: 999;
+      position: relative;
+      cursor: zoom-out;
+    }
+
+   .notes-section {
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 0 20px;
+  background: none;
+  box-shadow: none;
+  border-radius: 0;
+}
+
+    .download-link {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .download-link a {
+      background-color: #815606;
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .download-link a:hover {
+      background-color: #ad5f05;
+    }
+
+    .back-to-top {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      width: 42px;
+      height: 42px;
+      background-color: #f2a154;
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 20px;
+      text-decoration: none;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      z-index: 999;
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .back-to-top.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .back-to-top:hover {
+      background-color: #db874d;
+      transform: translateY(-4px);
+    }
+
+    .toggle-theme {
+      text-align: center;
+      margin: 20px;
+    }
+
+    .toggle-theme button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      background-color: #444;
+      color: #fff;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .dark-mode {
+      background-color: #121212;
+      color: #eee;
+    }
+
+    .dark-mode .header {
+      background-color: #3d291a;
+    }
+
+    .dark-mode .content-section {
+      background-color: #1f1f1f;
+    }
+
+    .dark-mode a,
+    .dark-mode .download-link a {
+      color: #fff;
+    }
+
+    .dark-mode .home-button {
+      background-color: #a66b28;
+    }
+
+    footer {
+  background-color: #1a1918;
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+  font-size: 0.9rem;
+  border-top: 2px solid #945605;
+}
+
+footer a {
+  color: #f2a154;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+footer a:hover {
+  color: #db874d;
+}
+
+  </style>
+</head>
+<body>
+  <a href="index.html" class="home-button">Home</a>
+ <div class="header">
+    <h1>Café Harmony Sales Performance Analysis</h1>
+    <p>This Café Harmony Sales Analysis dashboard is created using Microsoft Excel to provide a comprehensive overview of sales performance, stock levels, customer data, and employee contributions.</p>
+  </div>
+
+    <!-- Dashboard Image -->
+  <div class="content-section">
+    <h3>Dashboard Overview</h3>
+    <img src="images/Cafe Harm.PNG" alt="Dashboard" class="responsive-chart">
+  </div>
+
+     <!-- Video -->
+  <div class="content-section">
+    <h3>Video Walkthrough</h3>
+    <iframe width="100%" height="315"
+      src="https://www.youtube.com/embed/-9Gznofa5Cs"
+      frameborder="0"
+      allowfullscreen>
+    </iframe>
+  </div>
+
+    <!-- 📄 Section: Notes + PDF -->
+    <div class="notes-section">
+  <h2>Café Harmony Sales: Unveiling the Data Story</h2>
+
+
+    <h3>BUSINESS OVERVIEW</h3>
+    <p>
+      Welcome to Café Harmony, a new and exciting virtual café chain! The café specializes in offering a variety of drinks, snacks, and light meals to customers. Over the past year, Café Harmony has seen impressive growth but now faces new challenges as the company is scaling to meet customer demand. The café has multiple locations across the city, each with its own performance metrics and unique customer preferences.
+    </p>
+
+    <h3>DATA DESCRIPTION</h3>
+    <ul>
+      <li>Sales Data: This contains information on sales transactions across different locations, including item sold, prices, quantities, and sale dates.</li>
+      <li>Customer Data: This contains customer details such as age, gender, location, and preffered drink items.</li>
+      <li>Employee Data: This information is about employees ( e.g., name, role, salary and location.)</li>
+      <li>Stock Data: This is inventory of raw materials and supplies needed to prepare the cafe's menu items.</li>
+      <li>Feedback Data: This is customer satisfaction ratings and comments after each purchase.</li>
+    </ul>
+    
+
+    <h3>BUSINESS PROBLEM</h3>
+    <p>
+      Café Harmony has grown rapidly and now faces the challenge of improving its overall operational efficiency and customer experience. The company needs to identify the following key business questions:
+      <ul>
+        <li>How is the overall sales trend looking?</li>
+        <li>What menu item are performing the best across differnt locations?</li>
+        <li>What is the customer profile that tends to spend the most?</li>
+        <li>How can the business improve its stock management to avoid running out of popular items while also reducing overstock?</li>
+        <li>Are there any locations or employee performance issue that requires attention?</li>
+      </ul>
+    </p>
+    
+<h3>CONTEXT AND DATA SOURCE</h3>
+    <p>
+      This analysis was conducted to support strategic decision-making as Café Harmony expands into multiple cities. By using the Café Harmony dashboard, I aimed to answer key business questions related to growth trends, customer behavior, operational efficiency, and overall performance. This data was sourced from 10Alytics and is entirely dummy data created to simulate realistic café operations. 
+    </p>
+
+
+    <h3>DATA CLEANING AND PROCESS OF CREATING THE DASHBOARD</h3>
+    <p>
+      The raw data was first imported into Excel, where an initial review revealed several issues, including blank fields, duplicate entries, and inconsistent formatting. To clean the data, I used a combination of Excel tools:
+      <ul>
+        <li>TRIM to remove extra spaces in the text fields.</li>
+        <li>REMOVE DUPLICATES to eliminate redundant records.</li>
+        <li>IFERROR to manage calculation errors.</li>
+        <li>Text inconsistencies were corrected using PROPOER and manual review.</li>
+        </ul>
+        This process ensured that the dataset was accurate, consistent, and ready for analysis. 
+
+    </p>
+    <h3>Creating Pivot Tables:</h3>
+    <p>After cleaning, the data was converted into structured tables using Excel’s Format as Table feature. From there, I created pivot tables to summarize key business metrics such as total revenue, total quantity, total transactions, total customers, and avaerage rating. This allowed for efficient data aggregation.</p>
+    
+ </p>
+    <h3>Dashboard Design:</h3>
+    <p>The pivot tables were then used to build visualizations, including:</p>
+    <ul>
+        <li>Line charts for tracking monthly sales over time.</li>
+        <li>Bar charts is used to compare the average revenue, quantity and transaction over the period of three years. Also bar charts was used to compare product performance and stock level perfomance.</li>
+        <li>Infographic used to compare sales by gender.</li>
+        <li>Slicers for interactive filtering by time period.</li>
+        </ul>
+        <p>The dashboard was designed on a separate sheet, bringing together all major KPIs such as total revenue ($12,590), total quanity (3012), total transactions (1000), and average customer rating (3.047) into a single, easy-to-navigate interface. The focus was on creating a clear, interactive, and insightful tool to support management in making informed business decisions.</p>
+
+ <h3>INSIGHTS AND MEANING BEHIND THE NUMBERS</h3>
+<ul>
+        <li>1. Performance Trends:</li>
+        
+<p>Over the three-year period from 2024 to 2026, Café Harmony generated a total revenue of $12,590 from 3,012 units sold. Monthly sales fluctuated between $783K and $1.22K, with a significant revenue peak in August, May, and January which accounted for 28% of total sales. This peak suggests a seasonal sales boost possibly driven by promotional events or holiday demand, making August a key month for strategic marketing and resource planning. Despite a temporary dip to $783K in August, the overall sales trend remains positive, indicating consistent and growing customer interest.</p>
+ <img src="images/Cafe Analysis 2.PNG" alt="Sales Trend" class="responsive-chart" />
+
+ <li>2. Quarterly and Service Quality Trends:</li>
+<p>Revenue distribution across quarters shows a strong performance in Quarter 3 (27.2%) and Quarter 1 (26.38%), suggesting these periods are particularly valuable for driving business.</p>
+<img src="images/Cafe Analysis 3.PNG" alt="Quarterly Sales View" class="responsive-chart" />
+
+<li>3. Menu Item Performance and Stock Observations:</li>
+<p>The café's bestsellers over the period were Muffins (2.4K units) and Cappuccinos (2.3K units), and Iced Tea (2.2K units), together driving 55% of total sales. These two items clearly resonate with customers and are core to the café’s revenue.<p>
+  <img src="images/Cafe Analysis 4.PNG" alt="Product Performance" class="responsive-chart" />
+<p>However, the stock data reveals challenges:</p>
+<li>Items like Tea Bags (-20.7%) and Iced Tea Bags (-49.3%) experienced substantial negative inventory movements, signaling possible shortages or forecasting issues.</li>
+<li>Essential ingredients like Milk (-52.7%) and Muffin Mix (-33%) also declined sharply, raising concerns about potential stockouts for high-demand products.</li>
+ <img src="images/Cafe Analysis 5.PNG" alt="Stock Level Performance" class="responsive-chart" />
+<p>These insights stress the need for better stock monitoring to avoid interruptions in popular product availability.</p>
+<li>4. Customer Demographics and Spending Behavior.</li>
+<p>Female customers accounted for 54% of total sales, compared to 46% from male customers, making them a key demographic for future targeting and engagement strategies.</p>
+<img src="images/Cafe Analysis 6.PNG" alt="Stock Level Performance" class="responsive-chart" />
+<li>5. Location and Employee Performance:</li>
+<p>Among all locations, Uptown leads with 27% of total sales, outperforming the Suburbs (26%) and Downtown (25%), indicating stronger customer traction in that area.</p>
+<p>Top-performing employees like Elizabeth, Elizabeth Allen and David Smith contributed significantly to revenue, setting a benchmark for team performance and providing a case for recognizing high achievers.</p>
+<img src="images/Cafe Analysis 7.PNG" alt="Location Performance" class="responsive-chart" />
+</ul>
+
+<h3>SIGNIFICANCE AND ACTIONABLE INSIGHTS</h3>
+<p>These numbers reveal Café Harmony’s growth potential and operational challenges. The 28% August, May and January peak and 55% sales from Muffins and Cappuccinos emphasize the importance of capitalizing on high-demand periods and products. The 54% female contribution and $4,197 average revenue highlight a lucrative customer segment to target. Stock declines of -52.7% in Milk and -33% in Muffin Mix signal urgent inventory adjustments to avoid lost sales, while Uptown’s 27% share and top employees’ performance suggest location and staff optimization opportunities. The 20.28% neutral rating calls for enhanced customer experience initiatives. Together, these insights, derived from a meticulously cleaned and pivoted dataset, guide targeted promotions, inventory realignment, and performance recognition to sustain growth.</p>
+
+  </div>
+      <div class="download-link" style="margin-top: 20px;">
+        <a href="Café Harmony Sales Analysis.pdf" target="_blank">View PDF Presentation</a>
+      </div>
+      </div>
+
+      <!-- Dark Mode Toggle -->
+<div class="toggle-theme">
+  <button onclick="document.body.classList.toggle('dark-mode')">Toggle Dark Mode</button>
+</div>
+
+
+<!-- Back to Top Button -->
+<a href="#top" class="back-to-top" title="Back to Top">↑</a>
+
+
+<!-- Scripts -->
+<script>
+  document.querySelectorAll('.responsive-chart').forEach(img => {
+    img.addEventListener('click', () => {
+      img.classList.toggle('zoomed');
+    });
+  });
+
+  const backToTopBtn = document.querySelector('.back-to-top');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+      backToTopBtn.classList.add('show');
+    } else {
+      backToTopBtn.classList.remove('show');
+    }
+  });
+</script>
+
+<footer>
+  <p>© 2025 Café Harmony | Designed & Developed by <strong>Michael Afolayan</strong></p>
+  <p>
+    <a href="mailto:michaelcadmoss@gmail.com">Contact</a> | 
+    <a href="https://www.linkedin.com/in/michael-afolayann" target="_blank">LinkedIn</a>
+  </p>
+</footer>
+
+</body>
+</html>
