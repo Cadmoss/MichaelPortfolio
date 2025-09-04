@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Healthcare Economics Dashboard</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #eef6f9;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .header {
+      background-color: #006d77;
+      color: white;
+      padding: 30px;
+      text-align: center;
+    }
+
+    .header-top {
+      display: flex;
+      justify-content: flex-start;
+      margin-bottom: 10px;
+    }
+
+    .home-button {
+      background-color: #83c5be;
+      color: #003845;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-size: 1rem;
+      font-weight: 500;
+      transition: background-color 0.3s ease;
+    }
+
+    .home-button:hover {
+      background-color: #4db4a5;
+      color: white;
+    }
+
+    .header h1 {
+      margin: 0;
+      font-size: 2.2rem;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+
+    .embed-box, .video-box {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+      margin-bottom: 40px;
+    }
+
+    iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .dark-mode {
+      background-color: #121212;
+      color: #eee;
+    }
+
+    .dark-mode .header {
+      background-color: #037488;
+    }
+
+    .dark-mode .home-button {
+      background-color: #023f53;
+      color: #fff;
+    }
+
+    .toggle-theme {
+      text-align: center;
+      margin: 20px auto;
+    }
+
+    .toggle-theme button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      background-color: #0077b6;
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    /* Notes Section Styling */
+    .notes-section {
+      margin-top: 60px;
+      padding: 0 10px;
+      color: #003049;
+      line-height: 1.7;
+    }
+
+    .notes-section h2 {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      color: #0077b6;
+    }
+
+    .notes-section h3 {
+      font-size: 1.3rem;
+      margin-top: 40px;
+      margin-bottom: 10px;
+      color: #023e8a;
+    }
+
+    .notes-section p {
+      margin-bottom: 20px;
+    }
+
+    /* Chart/Graph Image Styling with Zoom */
+    .responsive-chart {
+      max-width: 100%;
+      height: auto;
+      margin: 20px 0;
+      display: block;
+      border-radius: 6px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .responsive-chart.zoomed {
+      transform: scale(2);
+      z-index: 999;
+      position: relative;
+      cursor: zoom-out;
+    }
+
+    @media (max-width: 768px) {
+      .responsive-chart.zoomed {
+        transform: scale(1.5);
+      }
+    }
+
+ /* Back to Top Button */
+    .back-to-top {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  width: 42px;
+  height: 42px;
+  background-color: transparent;
+  color: #bec8e6;
+  border: 2px solid #bcbfdf;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  text-decoration: none;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.back-to-top.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.back-to-top:hover {
+  background-color: #95ecd8;
+  color: #0a192f;
+  transform: translateY(-4px);
+}
+
+    footer {
+  background-color: #1a1918;
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+  font-size: 0.9rem;
+  border-top: 2px solid #945605;
+}
+
+footer a {
+  color: #f2a154;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+footer a:hover {
+  color: #db874d;
+}
+
+  </style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <a href="index.html" class="home-button">HOME</a>
+  </div>
+  <h1>Medical Metrics Details, Trends, and Provider Analysis</h1>
+  <p>This analysis provides a comprehensive insight into medical metrics, including billing amounts, trends, and provider performance across various departments, procedures, and regions in multiple cities throughout the United Kingdom, utilising Excel and Power BI for in-depth data exploration and visualisation.</p>
+</div>
+
+<div class="container">
+
+  <!-- Power BI Embed -->
+  <div class="embed-box">
+    <iframe title="Medical Metrics Dashboard"
+      src="https://app.powerbi.com/reportEmbed?reportId=0bce5c26-296e-4691-b972-e3a2b7d60e23&autoAuth=true&ctid=79401934-75b9-4f0a-b2e1-6bc24af8c9c9"
+      allowFullScreen="true">
+    </iframe>
+  </div>
+
+  <!-- Video Presentation Embed -->
+  <div class="video-box">
+    <iframe title="Healthcare Presentation Video"
+      src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
+      allowfullscreen>
+    </iframe>
+  </div>
+
+  <!-- PDF Link -->
+  <div style="text-align: center; margin-top: 20px;">
+    <a href="Healthcare_Economics_Report.pdf" target="_blank"
+       style="background-color: #0077b6; color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: 600;">
+      View PDF Presentation
+    </a>
+  </div>
+
+  <!-- Power BI Direct Link -->
+  <div style="text-align: center; margin-top: 20px;">
+    <a href="https://app.powerbi.com/reportEmbed?reportId=YOUR_REPORT_ID&autoAuth=true&ctid=YOUR_CTID&actionBarEnabled=true" 
+       target="_blank" 
+       style="color: #0077b6; text-decoration: none; font-weight: 600;">
+      🔗 Open in Power BI
+    </a>
+  </div>
+
+  <!-- Dashboard Snippets Section -->
+  <div style="margin-top: 50px;">
+    <h2 style="text-align: center; color: #0077b6;">Dashboard Highlights</h2>
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 20px; margin-top: 20px;">
+      
+      <!-- Snippet 1 -->
+      <div style="flex: 1; min-width: 280px; background: #ffffff; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); overflow: hidden;">
+        <img src="images/Details.PNG" alt="Detail" style="width: 100%; display: block;">
+        <div style="padding: 15px; color: #003049;">
+          <strong>Detail</strong><br>
+          This Dashboard provides a comprehensive overview of healthcare billing and costs across various cities in the United Kingdom, detailing average expenses, procedure-specific billing, departmental breakdowns, and diagnosis-related services.
+        </div>
+      </div>
+
+      <!-- Snippet 2 -->
+      <div style="flex: 1; min-width: 280px; background: #ffffff; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); overflow: hidden;">
+        <img src="images/Trend.PNG" alt="Trend" style="width: 100%; display: block;">
+        <div style="padding: 15px; color: #003049;">
+          <strong>Trend</strong><br>
+          The Medical Metrics Trend dashboard provides a comprehensive overview of billing amounts and trends across months, weeks, quarters, and departments, highlighting average billing per visit and year-over-year changes.
+        </div>
+      </div>
+
+      <!-- Snippet 3 -->
+      <div style="flex: 1; min-width: 280px; background: #ffffff; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); overflow: hidden;">
+        <img src="images/Provider.PNG" alt="Provider" style="width: 100%; display: block;">
+        <div style="padding: 15px; color: #003049;">
+          <strong>Provider</strong><br>
+          The Medical Metrics Provider dashboard provides a comprehensive overview of patient admissions, outpatient visits, regional distribution, visit types, and doctor performance metrics.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Notes Section (formerly info-box) -->
+  <section class="notes-section">
+    <h3>Medical Metrics Details, Trends, and Provider Analysis</h3>
+    <p>As a seasoned analyst with a passion for unravelling data’s hidden tales, I dive into the intricate world of medical metrics. The first image, a snapshot of Medical Metrics Details, shows us a billing amount of £3M, treatment costs of £2.6M, and a geographic spread from Glasgow to London, where procedures such as X-ray, MRI scan, and blood tests, along with diagnoses like hypertension, weave a financial tapestry. Medical Metrics Trend reveals a dynamic narrative: billing amounts fluctuate with a £3M average per visit at £674.86, dipping by 29.6% year-over-year, and weekday patterns differ from weekend patterns. Departmental insights show Orthopaedics and Cardiology leading the charge, with nuanced weekday patterns. The third, Medical Metrics Provider, highlights a dedicated workforce of 1,232 admitted patients and 3,768 outpatients, where providers like Dr. Emma Jones (4.85 rating) and Dr. Sade Kikiola (2.35 rating) drive a 61% non-emergency visit rate and a 39% emergency rate. Together, these metrics form a thrilling saga of resilience and adaptation, where every number tells a story of care, efficiency, and the relentless pursuit of balance in a rapidly evolving system.</p>
+
+    <h3>What is Medical Metrcis?</h3>
+    <p>Medical Metrics is a forward-thinking healthcare analytics company established to revolutionise the industry by harnessing data to drive better outcomes. It specialises in collecting and analysing key metrics such as billing amounts, treatment costs, and provider efficiency across the UK. By transforming complex data into clear, actionable insights, Medical Metrics empowers hospitals, clinics, and healthcare providers to optimise financial performance, improve patient care, and adapt to evolving trends, all while supporting a more efficient and responsive healthcare system.</p>
+
+    <h3>Project Objectives</h3>
+    <p>The project objective is to conduct a thorough analysis of the financial performance, including identifying key performance indicators (KPIs) and significant trends, while also assessing the performance and efficiency of healthcare providers to derive actionable insights from the dataset. Additionally, the project aims to develop a comprehensive, interactive, and user-friendly dashboard, featuring a Financial Overview, Provider Insights, and Trend Analysis, utilising appropriate visualisations to communicate findings to stakeholders clearly.</p>
+  
+
+    <h3>Data Dictionary</h3>
+    <p>The data dictionary includes eight datasets: <b>Cities, Departments, Diagnoses, Insurance, Patients, Procedures, Providers,</b><b> and Visits.</b></p>
+    <p><ul>
+      <li><b>Cities -</b> This dataset contains information about various cities, with each record consisting of three main columns: City ID, City, and State. The City ID is a unique numerical identifier assigned to each city to ensure distinct referencing within the database. The City column provides the name of the city, while the State column indicates the broader region, such as a state or province, where the city is located.</li>
+      <li><b>Departments -</b> This consists of two columns: Department ID and Department. The Department ID is a unique numerical identifier used to distinguish each department in the system. The Department column contains the name of the department, such as General Surgery.</li>
+      <li><b>Diagnoses -</b> This dataset includes two columns: Diagnosis ID and Diagnosis. The Diagnosis ID is a unique numerical code assigned to each medical condition for identification reference purposes. The Diagnosis column contains the name of the condition, such as Appendicitis.</li>
+      <li><b>Insurance -</b> This contains Insurance providers associated with patient coverage. It includes two columns: Insurance ID and Insurance Provider. The Insurance ID is a unique numerical identifier assigned to each insurance provider, ensuring accurate referencing across the database. The Insurance Provider column lists the name of the insurance company.</li>
+      <li><b>Patients -</b> This contains demographic and geographic information about individuals receiving medical care. Each record includes a Patient ID, which uniquely identifies each patient, along with their Patient Name, Gender, and Age. The City ID links to the Cities dataset, indicating the city of residence for each patient, while the Race column captures the patient's racial or ethnic background.</li>
+      <li><b>Procedures -</b> The Procedures dataset lists medical procedures performed during patient care. The Procedure ID is a unique numerical identifier assigned to each procedure, ensuring consistent referencing across related datasets. The Procedure column specifies the name of the medical procedure.</li>
+      <li><b>Providers -</b> The Providers dataset contains information about healthcare professionals who deliver medical services. It includes the following columns: Provider ID, a unique numerical identifier for each provider; Provider Name, which records the full name of the healthcare professional (e.g., Dr. Olu Abisola); Gender and Age, which provide demographic details; and Nationality, which indicates the provider’s country of origin (e.g., Nigerian).</li>
+      <li><b>Visits -</b> The Visits dataset records detailed information about each patient’s healthcare encounter, including the Date of Visit and identifiers such as Patient ID, Provider ID, Department ID, Diagnosis ID, Procedure ID, and Insurance ID, which link to their respective datasets. It captures the Service Type (e.g., outpatient), Treatment Cost, and Medication Cost, along with the Follow-Up Visit Date and Patient Satisfaction Score to track patient outcomes. Additional fields include Referral Source, whether the visit was an Emergency, and the Payment Status. For inpatient visits, the dataset also records Admitted Date, Discharge Date, Room Type, Insurance Coverage, and Room Charges (daily rate).</li>
+    </ul>
+    </p>
+
+    <h3>Discovering Key Findings</h3>
+<P>Imagine stepping into the vibrant healthcare landscape of the United Kingdom, where the heartbeat of a bustling medical system pulses through the numbers of the Medical Metrics Dashboard. This journey begins with a financial snapshot: a total billing amount of £3M, with an average of £674.86 per visit, signalling the economic engine driving care delivery. Additionally, medication costs £546,000 (£109.21 on average), while treatment costs reach £2.6 million (£526.08 on average). Room charges total £ 180,000 (£36.12 on average), while insurance covers £2.2 million (£456.04 per case), leaving £1.1 million (£227.26) as out-of-pocket expenses. </P>
+ <img src="images/Capture.PNG" alt="Product Performance" class="responsive-chart" />
+<p><strong>Why does this matter?</strong> These figures lay the foundation for understanding the financial health of the healthcare centre, revealing the delicate balance between revenue, operational costs, and patient affordability, a story of sustainability in action.</p>
+    <p>As we delve deeper, the dashboard unfolds a rich tapestry of regional and procedural insights. The map highlights cities such as Glasgow, Leeds, Manchester, Sheffield, Birmingham, and London, where total billing varies, reflecting the diverse economic demands across the UK.
+    <img src="images/Health2.PNG" alt="Product Performance" class="responsive-chart" />
+      Why? It shows where resources are concentrated and identifies potential gaps.</p>
+      <p>
+        Procedures tell their own tale: X-rays lead at £1,053,529, followed by CT Scans (£805,508), MRI Scans (£600,739), Ultrasounds (£481,347), and Blood Tests (£414,952), hinting at the diagnostic backbone supporting patient care, diagnoses such as Hypertension (22.26% Emergency, 23.83% Inpatient, 53.92% Outpatient).
+        <img src="images/Health3.PNG" alt="Product Performance" class="responsive-chart" />
+      </p>
+      <p>And departments like Cardiology (25.2%, £846,925) and Orthopaedics (24.2%, £813,253) dominate, revealing why certain areas require more investment and efficiency. The insight here? The data suggests a system that leans heavily on advanced diagnostics and specialised care, indicating a need to optimise resource allocation to maintain balance.
+      <img src="images/health4.PNG" alt="Product Performance" class="responsive-chart" />
+      </p>
+        <p>General Surgery (£783,247, 23.3%) and Neurology (£478,200, 14.2%) round out the departmental narrative, while Paediatrics (£434,450, 12.9%) hints at a growing focus on younger patients—why? This reflects a strategic shift toward comprehensive care across age groups. The meaning behind these numbers is clear: the healthcare centre thrives on a diverse revenue stream but faces challenges in managing out-of-pocket costs, which could impact patient access. The insight? Stakeholders should consider enhancing insurance coverage strategies and exploring cost efficiencies in high-volume procedures to ensure long-term financial stability and equitable care, turning data into a roadmap for a healthier future.</p>
+
+      <h3>Medical Metrics Trend</h3>
+      <p>As the curtains rise on the Medical Metrics Trend dashboard, a window into the evolving financial pulse of a UK healthcare centre opens. The story starts with a bold figure: a £3M billing amount, averaging £674.86 per visit, setting the stage for a financial narrative that drives patient care. Year-over-year, total billing dips from £2M in 2024 to £1.4M in 2025, a 29.6% decline, while weekdays yield £2.4M compared to £949K on weekends (a 60.6% drop), and quarterly totals fall from £1.7M in Q1 to £217K in Q4 (a 63.6% decrease).
+      <img src="images/Health5.PNG" alt="Product Performance" class="responsive-chart" />
+      Why does this matter? These numbers reveal the economic heartbeat, highlighting seasonal and weekly fluctuations that challenge the center’s revenue stability and prompt a quest for understanding underlying causes.</p>
+      <p>As the tale unfolds, monthly billing variations paint a vivid picture: January peaks at £852.1K, plummeting to £29.2K in November, with shifts like a £188.2K surge in December and a £174.2K drop in October—why? These swings, marked by ±APM values (e.g., +663.9K in January, -461.6K in February), reflect the ebb and flow of patient demand and operational efficiency.
+      <img src="images/Health6.PNG" alt="Product Performance" class="responsive-chart" /></p>
+      <p>Departmental insights deepen the narrative: Orthopaedics sees weekday highs of £148K, Cardiology fluctuates between £10.4K and £139K, General Surgery ranges from £111K to £120K, and Neurology from £63K to £97K, with Paediatrics holding steady at £60K to £69K. The ±APW values (e.g., +13K for Orthopaedics on Tuesday, -7 K for Cardiology on Sunday) suggest why some days thrive while others falter; specialised care and scheduling play key roles.</p>
+      <img src="images/Health7.PNG" alt="Product Performance" class="responsive-chart" /></p>
+      <p><b>The insight?</b> This data reveals a system sensitive to time-based trends, suggesting a closer examination of staffing and resource allocation to mitigate these peaks and troughs.
+      As the story reaches its climax, the analysis delivers its revelations. The consistent decline across quarters and week types signals a potential need for strategic intervention. <b>Why?</b> It hints at external factors, such as reduced patient visits or policy shifts, that may impact revenue. The meaning behind the numbers is a call to action: the healthcare centre must adapt to maintain financial health amidst these downturns. <b>The insight?</b> Stakeholders should explore boosting weekend services, analysing seasonal drivers, and optimising departmental schedules to reverse the downward trend, turning this financial saga into a roadmap for resilience and growth in the face of change.
+      </p>
+      <h3>Medical Metrics Providers</h3>
+      <p>As the Medical Metrics Provider dashboard opens a new chapter in the story of a UK healthcare centre’s human heart, the journey begins with a striking tally: 5,000 total visits, 1,232 patients admitted, and 3,768 outpatients, painting a picture of a bustling facility serving diverse needs.</p>
+      <p>Lengths of stay are as follows: 430 stays of 2-4 days, 409 for 5-7 days, 247 for 8+ days, and 146 for 1 day. Visit types are split, with 39% emergency and 61% non-emergency cases. <b>Why?</b> These figures establish the scale of care delivery, reflecting the centre’s role as a lifeline and the importance of understanding patient flow to optimise resources. As the odyssey progresses, the dashboard reveals the rhythm of care across time and speciality.</p>
+      <p>
+        The trend line dips from January to December, with visits peaking early and stabilizing later. <b>Why?</b> This suggests seasonal demand shifts, possibly tied to illness patterns or policy changes, with ± values hinting at operational adjustments.
+        <img src="images/Health8.PNG" alt="Product Performance" class="responsive-chart" /></p>
+        <p>Providers shine through: Dr. Emma Jones leads with a 4.85 rating, followed by Dr. Johnson Greg at 5.05, Dr. Olu Abisola at 5.45, Dr. Ravi Patel at 3.36, and Dr. Sade Kiikola at 2.35, managing a total of 1,232 admissions.
+        <img src="images/Health9.PNG" alt="Product Performance" class="responsive-chart" /></p>
+        <p>Departmental visits, including Cardiology (458), General Surgery (434), Orthopaedics (509), Neurology (419), Paediatrics (408), and regional data (England, Scotland, Northern Ireland, and Wales), show why some areas thrive. Specialised expertise and geographic access drive performance.
+        <img src="images/Health10.PNG" alt="Product Performance" class="responsive-chart" /></p>
+        <p><b>The insight?</b> The data highlights a skilled workforce facing variable demand, suggesting a need to align provider schedules with peak periods. As the journey concludes, the dashboard offers its final beacon. The balanced visit types (61% non-emergency, 39% emergency) and diverse provider ratings signal a system striving for consistency.<b>Why?</b> It reflects a commitment to quality care amid fluctuating workloads. The meaning behind these numbers is a testament to the centre’s adaptability; however, the lower ratings (e.g., 2.35) and seasonal dips suggest room for improvement. <b>The insight?</b> Stakeholders should invest in training for underperforming providers, enhance emergency capacity, and analyse seasonal trends to ensure a robust, patient-centred future, turning this odyssey into a guide for sustained excellence.</p>
+      
+      </section>
+
+</div>
+
+<!-- Optional: Dark Mode Toggle -->
+<div class="toggle-theme">
+  <button onclick="document.body.classList.toggle('dark-mode')">Toggle Dark Mode</button>
+</div>
+
+<!-- Image Zoom Script -->
+<script>
+  document.querySelectorAll('.responsive-chart').forEach(img => {
+    img.addEventListener('click', () => {
+      img.classList.toggle('zoomed');
+    });
+  });
+</script>
+
+  <!-- Back to Top Button -->
+ <a href="#" class="back-to-top" title="Back to Top">&#8679;</a>
+<script>
+      const backToTopBtn = document.querySelector('.back-to-top');
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+      backToTopBtn.classList.add('show');
+    } else {
+      backToTopBtn.classList.remove('show');
+    }
+  });
+  </script>
+
+<footer>
+  <p>© 2025 Café Harmony | Designed & Developed by <strong>Michael Afolayan</strong></p>
+  <p>
+    <a href="mailto:michaelcadmoss@gmail.com">Contact</a> | 
+    <a href="https://www.linkedin.com/in/michael-afolayann" target="_blank">LinkedIn</a>
+  </p>
+</footer>
+
+</body>
+</html>
