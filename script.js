@@ -135,7 +135,6 @@ function toggleChatbot() {
 // Close chatbot when clicking outside
 document.addEventListener("click", function (event) {
   const chatbot = document.getElementById("chatbot");
-  const chatbotToggle = document.querySelector(".chatbot-toggle");
   const chatbotContainer = document.querySelector(".chatbot-container");
 
   if (chatbot && chatbotContainer && !chatbotContainer.contains(event.target)) {
@@ -143,39 +142,21 @@ document.addEventListener("click", function (event) {
   }
 });
 
-// ================================
 // Handle chatbot form submission
-// ================================
 const form = document.querySelector(".chatbot-form");
 
-if (!form) {
-  console.error("❌ Form with class 'chatbot-form' not found in DOM.");
-} else {
+if (form) {
   form.addEventListener("submit", function (e) {
     e.preventDefault();
 
-    // --- Get elements ---
     const submitBtn = form.querySelector(".chatbot-submit");
-    const messageInput = form.querySelector(
-      'input[name="message"], textarea[name="message"]'
-    );
+    const messageInput = form.querySelector('textarea[name="message"]');
     const emailInput = form.querySelector('input[name="email"]');
     const chatMessages = document.querySelector("#chat-messages");
-    const originalText = submitBtn ? submitBtn.textContent : "Send Message";
+    const originalText = submitBtn.textContent;
 
-    // --- Validate elements exist ---
-    if (!submitBtn || !messageInput || !chatMessages) {
-      console.error("❌ Required elements not found:", {
-        submitBtn: !!submitBtn,
-        messageInput: !!messageInput,
-        chatMessages: !!chatMessages,
-      });
-      return;
-    }
-
-    // --- Validate message ---
+    // Validate message
     if (!messageInput.value.trim()) {
-      console.warn("⚠️ Message input is empty.");
       submitBtn.textContent = "Please enter a message";
       submitBtn.style.background = "#dc2626";
       setTimeout(() => {
@@ -185,40 +166,30 @@ if (!form) {
       return;
     }
 
-    // --- Show loading state ---
-    submitBtn.innerHTML = '<span class="loading"></span> Sending...';
+    // Show loading state
+    submitBtn.textContent = "Sending...";
     submitBtn.disabled = true;
 
-    // --- Collect form data ---
+    // Collect form data
     const formData = new FormData(form);
-    const email = emailInput ? emailInput.value : "";
+    const email = emailInput.value;
 
-    // Debug: log payload
-    console.log("📤 Submitting form data:");
-    for (let [key, value] of formData.entries()) {
-      console.log(`   ${key}: ${value}`);
-    }
-
-    // --- Submit to Formspree ---
+    // Submit to Formspree
     fetch("https://formspree.io/f/xqalpgrk", {
       method: "POST",
       body: formData,
-      headers: {
-        Accept: "application/json",
-      },
+      headers: { Accept: "application/json" },
     })
       .then(async (response) => {
         const data = await response.json().catch(() => ({}));
-
-        console.log("📥 Formspree raw response:", data);
+        console.log("Formspree response:", data);
 
         if (response.ok) {
-          // ✅ Success
           submitBtn.textContent = "Message Sent!";
           submitBtn.style.background = "#10b981";
           form.reset();
 
-          // Add success message to chat
+          // Add chatbot confirmation
           const botMsg = document.createElement("div");
           botMsg.classList.add("bot-message");
           botMsg.textContent = email
@@ -227,34 +198,26 @@ if (!form) {
           chatMessages.appendChild(botMsg);
           chatMessages.scrollTop = chatMessages.scrollHeight;
 
-          // Reset button
           setTimeout(() => {
             submitBtn.textContent = originalText;
             submitBtn.style.background = "#2563EB";
             submitBtn.disabled = false;
           }, 2000);
         } else {
-          throw new Error(
-            data.error || "❌ Formspree rejected the submission."
-          );
+          throw new Error(data.error || "Formspree error");
         }
       })
       .catch((error) => {
-        console.error("🚨 Form submission error:", error);
-
-        // Update button
+        console.error("Form submission error:", error);
         submitBtn.textContent = "Error - Try Again";
         submitBtn.style.background = "#dc2626";
 
-        // Add error message to chat
         const botMsg = document.createElement("div");
         botMsg.classList.add("bot-message", "error");
-        botMsg.textContent =
-          "Failed to send message. Please check your email and try again.";
+        botMsg.textContent = "Failed to send message. Please try again.";
         chatMessages.appendChild(botMsg);
         chatMessages.scrollTop = chatMessages.scrollHeight;
 
-        // Reset button
         setTimeout(() => {
           submitBtn.textContent = originalText;
           submitBtn.style.background = "#2563EB";
@@ -263,7 +226,8 @@ if (!form) {
       });
   });
 }
-}
+
+
 // Keyboard navigation for carousels
 document.addEventListener("keydown", function (e) {
   if (e.key === "ArrowLeft") {
