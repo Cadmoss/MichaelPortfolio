@@ -885,7 +885,7 @@ body {
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            color: rgba(255, 255, 255, 0.8);
+            color: rgba(0, 0, 0, 0.8);
             margin-bottom: 1.5rem;
         }
 
@@ -913,7 +913,7 @@ body {
         .job-bullet.pink { background: #ec4899; }
 
         .job-description p {
-            color: rgba(255, 255, 255, 0.9);
+            color: rgba(0, 0, 0, 0.9);
             line-height: 1.6;
         }
 
