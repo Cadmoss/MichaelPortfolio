@@ -755,16 +755,7 @@ body {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.6;
-            color: white;
-            background: linear-gradient(135deg, #581c87 0%, #1e3a8a 50%, #312e81 100%);
-            min-height: 100vh;
-            padding: 2rem 0;
-        }
+        
 
         .container {
             max-width: 1200px;
