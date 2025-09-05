@@ -47,25 +47,23 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Intersection Observer for animations
 
-document.addEventListener("DOMContentLoaded", () => {
-  const observerOptions = {
-    threshold: 0.1,
-    rootMargin: "0px 0px -50px 0px",
-  };
+const observerOptions = {
+  threshold: 0.1,
+  rootMargin: "0px 0px -50px 0px",
+};
 
-  const observer = new IntersectionObserver((entries, observer) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("animate-in"); // add class
-        observer.unobserve(entry.target); // stop observing once animated in
-      }
-    });
-  }, observerOptions);
-
-  // Observe all elements with animate-on-scroll
-  document.querySelectorAll(".animate-on-scroll").forEach((el) => {
-    observer.observe(el);
+const observer = new IntersectionObserver(function (entries, observer) {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("animate-in");
+      observer.unobserve(entry.target); // Stop observing once animated
+    }
   });
+}, observerOptions);
+
+// Observe elements for animation
+document.querySelectorAll(".project-card, .timeline-item, .stat-item").forEach((el) => {
+  observer.observe(el);
 });
 
 
