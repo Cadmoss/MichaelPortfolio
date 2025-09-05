@@ -13,10 +13,6 @@ body {
   overflow-x: hidden;
 }
 
-body > *:not(.footer) {
-  flex: 1 0 auto;
-}
-
 .container {
   max-width: 1200px;
   margin: 0 auto;
