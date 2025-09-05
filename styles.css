@@ -1233,14 +1233,9 @@ body > *:not(.footer) {
 
 /* Footer */
 .footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
   background: #111827;
   color: white;
   padding: 40px 20px 20px;
-}
 
 .footer-content {
   display: flex;
