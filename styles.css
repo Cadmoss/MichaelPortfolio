@@ -1405,7 +1405,6 @@ body {
   background: #1d4ed8;
 }
 
-/* Scroll Animation Styles */
 .animate-on-scroll {
   opacity: 0;
   transform: translateY(50px);
