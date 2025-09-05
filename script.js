@@ -46,26 +46,26 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // Intersection Observer for animations
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: "0px 0px -50px 0px",
+  };
 
-const observerOptions = {
-  threshold: 0.1,
-  rootMargin: "0px 0px -50px 0px",
-};
+  const observer = new IntersectionObserver(function (entries) {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("fade-in");
+      }
+    });
+  }, observerOptions);
 
-const observer = new IntersectionObserver(function (entries, observer) {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("animate-in");
-      observer.unobserve(entry.target); // Stop observing once animated
-    }
-  });
-}, observerOptions);
-
-// Observe elements for animation
-document.querySelectorAll(".project-card, .timeline-item, .stat-item").forEach((el) => {
-  observer.observe(el);
+  // Observe elements for animation
+  document
+    .querySelectorAll(".project-card, .timeline-item, .stat-item")
+    .forEach((el) => {
+      observer.observe(el);
+    });
 });
-
 
 // Carousel functionality
 let currentSlides = {
