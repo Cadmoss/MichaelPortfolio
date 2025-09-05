@@ -461,18 +461,23 @@ html {
 .carousel-slide {
     min-width: 100%;
     position: relative;
-    aspect-ratio: 16/9;
+    aspect-ratio: 4/3;
     display: flex;
     align-items: center;
     justify-content: center;
     background: #f8f9fa;
+    padding: 10px;
+    box-sizing: border-box;
 }
 
 .carousel-slide img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
+    object-position: center;
     display: block;
+    border-radius: 8px;
+    background: #f8f9fa;
 }
 
 .slide-caption {
@@ -480,7 +485,7 @@ html {
     bottom: 0;
     left: 0;
     right: 0;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+    background: linear-gradient(to top, rgba(43, 20, 115, 0.9), rgba(109, 68, 166, 0.7), transparent);
     color: white;
     padding: 2rem 1.5rem 1.5rem;
     font-weight: 600;
@@ -779,13 +784,18 @@ html {
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
 
-.timeline-item:nth-child(odd) .timeline-content {
-    margin-left: auto;
+.timeline-item:nth-child(1) .timeline-content {
+    margin-right: auto;
     text-align: left;
 }
 
-.timeline-item:nth-child(even) .timeline-content {
+.timeline-item:nth-child(2) .timeline-content {
     margin-right: auto;
+    text-align: left;
+}
+
+.timeline-item:nth-child(3) .timeline-content {
+    margin-left: auto;
     text-align: right;
 }
 
@@ -1327,6 +1337,10 @@ html {
         margin: 0;
     }
     
+    .chatbot.active {
+        transform: translateX(-50%) translateY(0);
+    }
+    
     .chatbot-container {
         right: 30px;
         bottom: 30px;
@@ -1371,7 +1385,6 @@ html {
     
     .chatbot.active {
         transform: translateX(-50%) translateY(0);
-    }
     }
     
     .chatbot-container {
@@ -1431,21 +1444,6 @@ html {
         font-size: 0.9rem;
     }
     
-    .carousel-slide {
-        aspect-ratio: 4/3;
-        padding: 10px;
-        box-sizing: border-box;
-    }
-    
-    .carousel-slide img {
-        object-fit: contain;
-        object-position: center;
-        width: 100%;
-        height: 100%;
-        border-radius: 8px;
-        background: #f8f9fa;
-    }
-    
     .container {
         padding: 0 15px;
     }
@@ -1497,3 +1495,4 @@ html {
         font-size: 0.9rem;
         line-height: 1.5;
     }
+}
