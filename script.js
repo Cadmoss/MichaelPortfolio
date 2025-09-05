@@ -45,24 +45,26 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // Intersection Observer for animations
-const observerOptions = {
-  threshold: 0.1,
-  rootMargin: "0px 0px -50px 0px",
-};
+  document.addEventListener("DOMContentLoaded", () => {
+  const observerOptions = {
+    threshold: 0.1,
+  };
 
-const observer = new IntersectionObserver((entries, observer) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("animate-in"); // apply animation
-      observer.unobserve(entry.target); // stop observing once animated in
-    }
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("animate-in");
+      } else {
+        // If you want them to hide again when leaving viewport, uncomment:
+        // entry.target.classList.remove("animate-in");
+      }
+    });
+  }, observerOptions);
+
+  // Observe all elements with the class
+  document.querySelectorAll(".animate-on-scroll").forEach((el) => {
+    observer.observe(el);
   });
-}, observerOptions);
-
-// Observe all elements with animate-on-scroll
-document.querySelectorAll(".animate-on-scroll").forEach((el) => {
-  observer.observe(el);
 });
 
 // Carousel functionality
