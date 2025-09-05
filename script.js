@@ -51,20 +51,19 @@ const observerOptions = {
   rootMargin: "0px 0px -50px 0px",
 };
 
-const observer = new IntersectionObserver(function (entries) {
+const observer = new IntersectionObserver((entries, observer) => {
   entries.forEach((entry) => {
     if (entry.isIntersecting) {
-      entry.target.classList.add("animate-in"); // FIXED ✅
+      entry.target.classList.add("animate-in"); // apply animation
+      observer.unobserve(entry.target); // stop observing once animated in
     }
   });
 }, observerOptions);
 
-// Observe elements for animation
-document
-  .querySelectorAll(".project-card, .timeline-item, .stat-item, .animate-on-scroll")
-  .forEach((el) => {
-    observer.observe(el);
-  });
+// Observe all elements with animate-on-scroll
+document.querySelectorAll(".animate-on-scroll").forEach((el) => {
+  observer.observe(el);
+});
 
 // Carousel functionality
 let currentSlides = {
