@@ -639,7 +639,7 @@ html {
 
 /* About Section */
 .about {
-    padding: 80px 20px;
+    padding: 40px 20px 80px;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
 }
@@ -1328,17 +1328,24 @@ html {
     }
     
     .chatbot {
-        width: calc(100vw - 60px);
-        max-width: 350px;
-        bottom: 70px;
-        left: 50%;
-        right: auto;
-        transform: translateX(-50%);
+        position: fixed;
+        bottom: 80px;
+        left: 10px;
+        right: 10px;
+        width: auto;
+        max-width: none;
+        transform: none;
         margin: 0;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(20px);
+        transition: all 0.3s ease;
     }
     
     .chatbot.active {
-        transform: translateX(-50%) translateY(0);
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
     }
     
     .chatbot-container {
@@ -1374,17 +1381,24 @@ html {
     }
     
     .chatbot {
-        width: calc(100vw - 40px);
-        max-width: 300px;
-        bottom: 70px;
-        left: 50%;
-        right: auto;
-        transform: translateX(-50%);
+        position: fixed;
+        bottom: 80px;
+        left: 10px;
+        right: 10px;
+        width: auto;
+        max-width: none;
+        transform: none;
         margin: 0;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(20px);
+        transition: all 0.3s ease;
     }
     
     .chatbot.active {
-        transform: translateX(-50%) translateY(0);
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
     }
     
     .chatbot-container {
