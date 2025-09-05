@@ -1321,9 +1321,9 @@ html {
         width: calc(100vw - 60px);
         max-width: 350px;
         bottom: 80px;
-        right: 30px;
-        left: 30px;
-        margin: 0 auto;
+        right: 50%;
+        left: auto;
+        transform: translateX(50%);
     }
     
     .chatbot-container {
@@ -1359,12 +1359,12 @@ html {
     }
     
     .chatbot {
-        width: calc(100vw - 40px);
-        max-width: 320px;
-        right: 20px;
-        left: 20px;
-        margin: 0 auto;
+        width: calc(100vw - 30px);
+        max-width: 300px;
         bottom: 80px;
+        right: 50%;
+        left: auto;
+        transform: translateX(50%);
     }
     
     .chatbot-container {
@@ -1406,10 +1406,10 @@ html {
         margin-bottom: 0.5rem;
     }
     
-   .chatbot-form textarea {
-    min-height: 60px;
-    height: 60px; /* or auto, depending on your needs */
-}
+    .chatbot-form textarea {
+        rows: 2;
+        min-height: 60px;
+    }
     
     .chatbot-submit {
         padding: 0.5rem;
