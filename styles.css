@@ -242,6 +242,8 @@ html {
     margin: 0 0 2rem 0;
     max-width: 600px;
     text-align: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* Hero Headshot */
@@ -418,7 +420,7 @@ html {
 
 /* Featured Work Section */
 .featured-work {
-    padding: 80px 20px;
+    padding: 40px 20px 80px;
     background: #f9fafb;
 }
 
@@ -519,7 +521,7 @@ html {
 
 /* Projects Section */
 .projects {
-    padding: 80px 20px;
+    padding: 40px 20px 80px;
     background: white;
 }
 
@@ -1047,6 +1049,56 @@ html {
     cursor: not-allowed;
 }
 
+/* Back to Top Button */
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg, #2b1473 0%, #6d44a6 35%, #77a1d9 70%, #d95838 100%);
+    border: none;
+    border-radius: 50%;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 25px rgba(43, 20, 115, 0.3);
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 9999;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.back-to-top.hidden {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px) scale(0.8);
+}
+
+.back-to-top:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 12px 35px rgba(43, 20, 115, 0.4);
+    background: linear-gradient(135deg, #d95838 0%, #77a1d9 30%, #6d44a6 65%, #2b1473 100%);
+}
+
+.back-to-top:active {
+    transform: translateY(-1px) scale(0.98);
+}
+
+.back-to-top i {
+    transition: transform 0.3s ease;
+}
+
+.back-to-top:hover i {
+    transform: translateY(-2px);
+}
+
 /* Footer */
 .footer {
     background: #111827;
@@ -1134,56 +1186,6 @@ html {
     animation: spin 1s ease-in-out infinite;
 }
 
-/* Back to Top Button */
-.back-to-top {
-  position: fixed;
-  bottom: 30px;
-  left: 30px;
-  width: 50px;
-  height: 50px;
-  background: linear-gradient(135deg, #6d44a6, #2b1473);
-  color: white;
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.2rem;
-  box-shadow: 0 4px 15px rgba(109, 68, 166, 0.3);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(20px) scale(0.8);
-  z-index: 999;
-  backdrop-filter: blur(10px);
-  border: 2px solid rgba(255, 255, 255, 0.1);
-}
-
-.back-to-top.visible {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0) scale(1);
-}
-
-.back-to-top:hover {
-  background: linear-gradient(135deg, #7c3aed, #581c87);
-  transform: translateY(-3px) scale(1.1);
-  box-shadow: 0 8px 25px rgba(109, 68, 166, 0.4);
-}
-
-.back-to-top:active {
-  transform: translateY(-1px) scale(1.05);
-}
-
-.back-to-top i {
-  transition: transform 0.3s ease;
-}
-
-.back-to-top:hover i {
-  transform: translateY(-2px);
-}
-
 @keyframes spin {
     to {
         transform: rotate(360deg);
@@ -1204,6 +1206,11 @@ html {
     .about-stats {
         flex-direction: row;
         justify-content: space-around;
+    }
+    
+    .contact-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
     }
 }
 
@@ -1307,152 +1314,169 @@ html {
         width: calc(100% - 80px);
         margin-left: 80px !important;
         margin-right: 0 !important;
-    font-size: clamp(2rem, 10vw, 2.8rem);
+        text-align: left !important;
     }
     
     .chatbot {
-    font-size: clamp(0.9rem, 4vw, 1.1rem);
-        bottom: 70px;
-        right: -10px;
-        height: 350px;
-    font-size: clamp(0.9rem, 3.5vw, 1rem);
-    padding: 0 0.5rem;
-    line-height: 1.5;
+        width: calc(100vw - 60px);
+        max-width: 350px;
+        bottom: 80px;
+        right: 30px;
+        left: 30px;
+        margin: 0 auto;
+    }
+    
+    .chatbot-container {
+        right: 30px;
+        bottom: 30px;
+    }
     
     .footer-content {
         flex-direction: column;
         gap: 1.5rem;
         text-align: center;
-    align-items: center;
     }
 }
 
 @media (max-width: 480px) {
-  .back-to-top {
-    gap: 0.75rem;
-    bottom: 15px;
-    left: 15px;
-    width: 45px;
-    height: 45px;
-    padding: 0.5rem 1rem;
-    font-size: 0.85rem;
-    font-size: 1.1rem;
-  }
-
     .headshot-container {
         width: 120px;
-    gap: 0.75rem;
         height: 120px;
     }
     
     .hero-stats {
         gap: 1rem;
         flex-direction: column;
-    padding: 0.75rem 1rem;
-    font-size: 0.9rem;
     }
     
     .skills-showcase {
-    font-size: clamp(1.8rem, 7vw, 2.2rem);
-    margin-bottom: 1.5rem;
+        flex-direction: column;
         align-items: center;
     }
     
-    .width {
-    width: calc(100vw - 30px);
-    max-width: 300px;
-    right: 15px;
-    bottom: 60px;
-    position: absolute; /* or fixed, depending on intent */
-}
+    .skill-pill {
+        width: fit-content;
+    }
     
     .chatbot {
-        width: 280px;
-        right: 10px;
-        height: 320px;
+        width: calc(100vw - 40px);
+        max-width: 320px;
+        right: 20px;
+        left: 20px;
+        margin: 0 auto;
+        bottom: 80px;
     }
-  .my-class {
-    padding: 30px 10px;
-    width: 45px;
-    height: 45px;
-    font-size: 1rem;
-    bottom: 20px;
+    
+    .chatbot-container {
+        right: 20px;
+        bottom: 20px;
+    }
+    
+    .chatbot-toggle {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+    }
+    
+    .chatbot-header {
+        padding: 0.75rem 1rem;
+    }
+    
+    .chatbot-header h4 {
+        font-size: 0.9rem;
+    }
+    
+    .chatbot-body {
+        padding: 1rem;
+    }
+    
+    .chatbot-messages {
+        max-height: 150px;
+    }
+    
+    .bot-message {
+        padding: 0.5rem 0.75rem;
+        font-size: 0.85rem;
+    }
+    
+    .chatbot-form input,
+    .chatbot-form textarea {
+        padding: 0.5rem;
+        font-size: 0.85rem;
+        margin-bottom: 0.5rem;
+    }
+    
+   .chatbot-form textarea {
+    min-height: 60px;
+    height: 60px; /* or auto, depending on your needs */
 }
     
-  .carousel-slide {
-    aspect-ratio: 4/3;
-  }
+    .chatbot-submit {
+        padding: 0.5rem;
+        font-size: 0.85rem;
+    }
 
-  .container {
-    padding: 0 15px;
-  }
-
-  .section-title {
-    font-size: 1.8rem;
-    margin-bottom: 1.5rem;
-  }
-
-  .carousel-title {
-    font-size: 1.3rem;
-    margin-bottom: 0.5rem;
-  }
-
-  .projects-grid {
-    gap: 1rem;
-  }
-
-  .project-card {
-    border-radius: 12px;
-  }
-
-  .project-content {
-    padding: 1.25rem;
-  }
-
-  .timeline-content {
-    padding: 1.25rem;
-    font-size: 0.9rem;
-    width: calc(100% - 60px);
-    margin-left: 60px !important;
-  }
-
-  .timeline-line {
-    left: 20px;
-  }
-
-  .timeline-dot {
-    left: 20px;
-    width: 1rem;
-    height: 1rem;
-    border-width: 3px;
-  }
-
-  .about-text p {
-    font-size: 1rem;
-    line-height: 1.6;
-  }
-
-  .about-stats .stat-item h3 {
-    font-size: 2rem;
-  }
-
-  .disclaimer {
-    padding: 20px 10px;
-  }
-
-  .disclaimer p {
-    font-size: 0.9rem;
-    line-height: 1.5;
-  }
-
-  .nav-container {
-    padding: 0 15px;
-  }
-
-  .hero {
-    padding: 90px 10px 50px;
-  }
-
-  .hero-container {
-    padding: 0 1rem;
-  }
+    .back-to-top {
+        width: 44px;
+        height: 44px;
+        bottom: 20px;
+        left: 20px;
+        font-size: 0.9rem;
+    }
+    
+    .carousel-slide {
+        aspect-ratio: 4/3;
+    }
+    
+    .container {
+        padding: 0 15px;
+    }
+    
+    .projects-grid {
+        gap: 1rem;
+    }
+    
+    .project-card {
+        border-radius: 12px;
+    }
+    
+    .project-content {
+        padding: 1.25rem;
+    }
+    
+    .timeline-content {
+        padding: 1.25rem;
+        font-size: 0.9rem;
+        width: calc(100% - 60px);
+        margin-left: 60px !important;
+    }
+    
+    .timeline-line {
+        left: 20px;
+    }
+    
+    .timeline-dot {
+        left: 20px;
+        width: 1rem;
+        height: 1rem;
+        border-width: 3px;
+    }
+    
+    .about-text p {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+    
+    .about-stats .stat-item h3 {
+        font-size: 2rem;
+    }
+    
+    .disclaimer {
+        padding: 30px 15px;
+    }
+    
+    .disclaimer p {
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+}
