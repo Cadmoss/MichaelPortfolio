@@ -45,27 +45,29 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  document.addEventListener("DOMContentLoaded", () => {
+  // Intersection Observer for animations
+
+document.addEventListener("DOMContentLoaded", () => {
   const observerOptions = {
     threshold: 0.1,
+    rootMargin: "0px 0px -50px 0px",
   };
 
-  const observer = new IntersectionObserver((entries) => {
+  const observer = new IntersectionObserver((entries, observer) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        entry.target.classList.add("animate-in");
-      } else {
-        // If you want them to hide again when leaving viewport, uncomment:
-        // entry.target.classList.remove("animate-in");
+        entry.target.classList.add("animate-in"); // add class
+        observer.unobserve(entry.target); // stop observing once animated in
       }
     });
   }, observerOptions);
 
-  // Observe all elements with the class
+  // Observe all elements with animate-on-scroll
   document.querySelectorAll(".animate-on-scroll").forEach((el) => {
     observer.observe(el);
   });
 });
+
 
 // Carousel functionality
 let currentSlides = {
