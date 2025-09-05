@@ -1358,25 +1358,26 @@ html {
         align-items: center;
     }
     
+    .width {
     width: calc(100vw - 30px);
     max-width: 300px;
     right: 15px;
     bottom: 60px;
-    }
+    position: absolute; /* or fixed, depending on intent */
+}
     
     .chatbot {
         width: 280px;
         right: 10px;
         height: 320px;
     }
-    
+  .my-class {
     padding: 30px 10px;
-        width: 45px;
-        height: 45px;
-        font-size: 1rem;
-    padding: 30px 10px;
-        bottom: 20px;
-    }
+    width: 45px;
+    height: 45px;
+    font-size: 1rem;
+    bottom: 20px;
+}
     
   .carousel-slide {
     aspect-ratio: 4/3;
