@@ -749,6 +749,30 @@ body {
   background: #1d4ed8;
   transform: translateY(-2px);
 }
+
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* full viewport height */
+}
+
+/* Let main content grow */
+main {
+  flex: 1;
+}
+
+/* Footer styles */
+.footer {
+  background: #111827;
+  color: white;
+  padding: 40px 20px 20px;
+}
+
+.footer {
+  padding-bottom: 5rem; /* prevents overlap with chatbot */
+}
+
             * {
             margin: 0;
             padding: 0;
@@ -1218,10 +1242,6 @@ body {
 
 /* Footer */
 .footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
   background: #111827;
   color: white;
   padding: 40px 20px 20px;
