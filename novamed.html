@@ -112,52 +112,111 @@ iframe {
       vertical-align: top;
     }
 
-    * Dark Mode */
-.dark-mode,
-.dark-mode html,
-.dark-mode body {
-  background-color: #121212;
-  color: #eee;
+    /* Dark Mode
+       -------------------------
+       Use html.dark-mode so we only need to add the class to the <html>.
+       We apply !important to override inline styles (e.g. background:#fff)
+    */
+html.dark-mode, html.dark-mode body {
+  background-color: #121212 !important;
+  color: #eee !important;
 }
 
 /* Headings in dark mode */
-.dark-mode h1, 
-.dark-mode h2, 
-.dark-mode h3 {
-  color: #fff;
+html.dark-mode h1,
+html.dark-mode h2,
+html.dark-mode h3 {
+  color: #fff !important;
 }
 
 /* Header */
-.dark-mode .header {
-  background-color: #004424;
-  color: #eee;
+html.dark-mode .header {
+  background-color: #004424 !important;
+  color: #eee !important;
 }
 
 /* Links */
-.dark-mode a {
-  color: #70eec4;
+html.dark-mode a {
+  color: #70eec4 !important;
 }
 
 /* Home button */
-.dark-mode .home-button {
-  background-color: #016327;
-  color: #fff;
+html.dark-mode .home-button {
+  background-color: #016327 !important;
+  color: #fff !important;
 }
 
-/* Cards & Highlight Boxes */
-.dark-mode .about-section div,
-.dark-mode .about-section,
-.dark-mode .container div {
+/* Ensure container and its children show light text (override inline colors) */
+html.dark-mode .container,
+html.dark-mode .container * {
+  color: #e6e6e6 !important;
+}
+
+/* Override snippet cards and any inline white backgrounds */
+html.dark-mode .container [style*="background: #fff"],
+html.dark-mode .container [style*="background:#fff"],
+html.dark-mode .container [style*="background:rgb(255,255,255)"] {
   background-color: #1e1e1e !important;
-  color: #eee;
+  color: #e6e6e6 !important;
+}
+
+/* Ensure about-section elements are readable */
+html.dark-mode .about-section,
+html.dark-mode .about-section * {
+  color: #e6e6e6 !important;
+  background-color: transparent !important;
+}
+
+/* Make embed boxes a little gentler in dark */
+html.dark-mode .embed-box,
+html.dark-mode .video-box {
+  box-shadow: 0 0 15px rgba(255,255,255,0.03) !important;
+  border: 1px solid rgba(255,255,255,0.03) !important;
 }
 
 /* Footer */
-.dark-mode footer {
-  background-color: #000;
-  color: #bbb;
-  border-top: 2px solid #444;
+html.dark-mode footer {
+  background-color: #000 !important;
+  color: #bbb !important;
+  border-top-color: #444 !important;
 }
+
+    /* Toggle Button */
+    .toggle-theme {
+      text-align: center;
+      margin: 20px auto;
+    }
+
+    .toggle-theme button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      background-color: #00b679;
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    /* Footer */
+    footer {
+      margin-top: auto;
+      background-color: #1a1918;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+      border-top: 2px solid #945605;
+    }
+
+    footer a {
+      color: #f2a154;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    footer a:hover {
+      color: #db874d;
+    }
   </style>
 </head>
 <body>
@@ -278,7 +337,7 @@ Consistent monthly inflows ensure cash flow stability, but negative shifts highl
     <p>Demographics by gender show males at 47% contributing £33M, females at 32% with £23M, and undefined at 21% yielding £15M. <b>Why the skew?</b> Males may dominate in specific drug categories (e.g., cardiovascular), while undefined could reflect data gaps or non-binary identifiers. The meaning: Gender influences £71M total revenue (summing segments), with males as the powerhouse but females underrepresented. <b>Insight:</b> Bridging gaps through inclusive marketing or better data collection could unlock female-driven growth, potentially adding millions by tailoring campaigns to women's health needs.</p>
     <img src="Novamed5.PNG" alt="Example Note" style="max-width: 100%; margin-top: 15px;">
     <p>Revenue and profit by country highlight geographic concentrations: Canada leads (£32M revenue, high profit), followed by Australia (£15M), Germany (£7M), the UK (£7M), France (£6M), and the US (£6M). The declining line chart across years (2022 £32M to 2026 £6M) warns of overall erosion, possibly from market saturation or competition. Meaning: Regional strengths in Canada/Australia (strong healthcare systems) contrast with weaker US/Europe penetration, which is attributed to regulatory or cultural factors. <b>Insight:</b> Double down on top markets with expansions, while investigating US barriers (e.g., pricing wars) to reverse the downward trajectory and diversify risk.</p>
-     <img src="images/Novamed6.PNG" alt="Example Note" style="max-width: 100%; margin-top: 15px;">
+     <img src="Novamed6.PNG" alt="Example Note" style="max-width: 100%; margin-top: 15px;">
      <p>Purchasing behaviour by revenue underscores segment value: Preferred customers generate £26M, new customers £24M, and frequent buyers £21M. This near-parity means new customers punch above their weight, perhaps from high initial orders, while preferred offers steady streams. <b>Insight:</b> Incentives like tiered rewards could migrate new to preferred, amplifying the 67% repeat rate and elevating low-end frequent buyers through upselling.</p>
     <p>The customer details table spotlights individuals: Top earners like Bob Williams (£803K, age 38, preferred) and John Jones (£624K, age 63, new), with photos humanising the data. Seller vs. user customers' pie shows 88% users and 12% sellers, indicating B2C dominance. Meaning: High-value outliers drive disproportional revenue, reflecting personalised needs or bulk buys. <b>Insight:</b> Profile these VIPs for personas, e.g., mid-age professionals, to replicate success via CRM targeting, while growing the seller slice through B2B partnerships.</p>
     <img src="Novamed7.PNG" alt="Example Note" style="max-width: 100%; margin-top: 15px;">
