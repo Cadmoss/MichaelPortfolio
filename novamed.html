@@ -4,20 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>NovaMed Sales and Customer Performance Analysis</title>
-  <style>
-  <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>NovaMed Sales and Customer Performance Analysis</title>
-  <style>
-    /* Layout Fix */
-    html, body {
-      height: 100%;
+    <style>
+    /* Base Styling */
+    body {
       margin: 0;
-      display: flex;
-      flex-direction: column;
       font-family: 'Roboto', sans-serif;
       font-size: 16px;
       line-height: 1.7;
@@ -26,14 +16,10 @@
       transition: background-color 0.3s, color 0.3s;
     }
 
-    main {
-      flex: 1; /* ensures footer stays at bottom */
-    }
-
     h1, h2, h3 {
       font-weight: 700;
       margin-bottom: 0.5rem;
-      color: #000;
+      color: #000000;
     }
 
     p {
@@ -75,118 +61,66 @@
     }
 
     /* Container */
-.container {
-  max-width: 900px;
-  margin: 40px auto;
-  padding: 20px;
-}
-
-/* Embeds */
-.embed-box, .video-box {
-  position: relative;
-  width: 95%;             /* smaller than full screen */
-  max-width: 700px;       /* medium size cap */
-  margin: 0 auto 40px;    /* center it */
-  padding-top: 50%;       /* aspect ratio (50% ~ 16:9 but less tall) */
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
-}
-
-/* Iframe */
-iframe {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%;           /* make iframe fit parent */
-  height: 100%;
-  border: none;
-}
-
-    /* About section text alignment */
-    .about-section,
-    .about-section * {
-      text-align: left !important;
+    .container {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 20px;
     }
 
-    /* Dashboard snippet images */
-    .about-section img {
-      display: inline-block;
-      max-width: 300px;
-      height: auto;
-      margin: 0 15px 15px 0;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-      vertical-align: top;
+    /* Embeds */
+    .embed-box, .video-box {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+      margin-bottom: 40px;
     }
 
-    /* Dark Mode
-       -------------------------
-       Use html.dark-mode so we only need to add the class to the <html>.
-       We apply !important to override inline styles (e.g. background:#fff)
-    */
-html.dark-mode, html.dark-mode body {
-  background-color: #121212 !important;
-  color: #eee !important;
+    iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+/* Ensure analysis notes are left-aligned */
+.about-section,
+.about-section * {
+  text-align: left !important;
 }
 
-/* Headings in dark mode */
-html.dark-mode h1,
-html.dark-mode h2,
-html.dark-mode h3 {
-  color: #fff !important;
+/* Make dashboard snippet images smaller */
+.about-section img {
+  display: inline-block;
+  max-width: 300px; /* smaller size */
+  height: auto;
+  margin: 0 15px 15px 0;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  vertical-align: top;
 }
 
-/* Header */
-html.dark-mode .header {
-  background-color: #004424 !important;
-  color: #eee !important;
-}
+    /* Dark Mode */
+    .dark-mode {
+      background-color: #121212;
+      color: #eee;
+    }
 
-/* Links */
-html.dark-mode a {
-  color: #70eec4 !important;
-}
+    .dark-mode .header {
+      background-color: #004424;
+    }
 
-/* Home button */
-html.dark-mode .home-button {
-  background-color: #016327 !important;
-  color: #fff !important;
-}
+    .dark-mode a {
+      color: #70eec4;
+    }
 
-/* Ensure container and its children show light text (override inline colors) */
-html.dark-mode .container,
-html.dark-mode .container * {
-  color: #e6e6e6 !important;
-}
-
-/* Override snippet cards and any inline white backgrounds */
-html.dark-mode .container [style*="background: #fff"],
-html.dark-mode .container [style*="background:#fff"],
-html.dark-mode .container [style*="background:rgb(255,255,255)"] {
-  background-color: #1e1e1e !important;
-  color: #e6e6e6 !important;
-}
-
-/* Ensure about-section elements are readable */
-html.dark-mode .about-section,
-html.dark-mode .about-section * {
-  color: #e6e6e6 !important;
-  background-color: transparent !important;
-}
-
-/* Make embed boxes a little gentler in dark */
-html.dark-mode .embed-box,
-html.dark-mode .video-box {
-  box-shadow: 0 0 15px rgba(255,255,255,0.03) !important;
-  border: 1px solid rgba(255,255,255,0.03) !important;
-}
-
-/* Footer */
-html.dark-mode footer {
-  background-color: #000 !important;
-  color: #bbb !important;
-  border-top-color: #444 !important;
-}
+    .dark-mode .home-button {
+      background-color: #016327;
+      color: #fff;
+    }
 
     /* Toggle Button */
     .toggle-theme {
@@ -206,13 +140,17 @@ html.dark-mode footer {
 
     /* Footer */
     footer {
-      margin-top: auto;
       background-color: #1a1918;
       color: #fff;
       text-align: center;
       padding: 20px;
+      margin-top: 40px;
       font-size: 0.9rem;
       border-top: 2px solid #945605;
+    }
+
+    footer p {
+      margin: 5px 0;
     }
 
     footer a {
