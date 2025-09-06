@@ -6,209 +6,203 @@
   <title>NovaMed Sales and Customer Performance Analysis</title>
   <style>
     /* Layout Fix */
-    html, body {
-      height: 100%;
-      margin: 0;
-      display: flex;
-      flex-direction: column;
-      font-family: 'Roboto', sans-serif;
-      font-size: 16px;
-      line-height: 1.7;
-      background-color: #dff7d5;
-      color: #383838;
-      transition: background-color 0.3s, color 0.3s;
-    }
+html, body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  background-color: #dff7d5;
+  color: #383838;
+  transition: background-color 0.3s, color 0.3s;
+}
 
-    main {
-      flex: 1; /* ensures footer stays at bottom */
-    }
+main {
+  flex: 1; /* keeps footer at bottom */
+}
 
-    h1, h2, h3 {
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-      color: #000;
-    }
+h1, h2, h3 {
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #000;
+}
 
-    p {
-      margin-bottom: 1.2rem;
-    }
+p {
+  margin-bottom: 1.2rem;
+}
 
-    ul {
-      margin-bottom: 1.5rem;
-    }
+ul {
+  margin-bottom: 1.5rem;
+}
 
-    /* Header */
-    .header {
-      background-color: #3c613f;
-      color: white;
-      padding: 30px;
-      text-align: center;
-    }
+/* Header */
+.header {
+  background-color: #3c613f;
+  color: white;
+  padding: 30px;
+  text-align: center;
+}
 
-    .header-top {
-      display: flex;
-      justify-content: flex-start;
-      margin-bottom: 10px;
-    }
+.header-top {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 10px;
+}
 
-    .home-button {
-      background-color: #33814b;
-      color: #003845;
-      text-decoration: none;
-      padding: 8px 16px;
-      border-radius: 6px;
-      font-size: 1rem;
-      font-weight: 500;
-      transition: background-color 0.3s ease;
-    }
+.home-button {
+  background-color: #33814b;
+  color: #003845;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
 
-    .home-button:hover {
-      background-color: #597260;
-      color: white;
-    }
+.home-button:hover {
+  background-color: #597260;
+  color: white;
+}
 
-    /* Power BI Embed - larger */
-    .embed-box {
-      position: relative;
-      width: 100%;            
-      max-width: 1100px;      /* increased from 900px to make it larger */
-      margin: 0 auto 40px;    
-      padding-top: 56.25%;    /* 16:9 aspect ratio */
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
-    }
+/* Power BI Embed - larger */
+.embed-box {
+  position: relative;
+  width: 100%;
+  max-width: 1100px;   /* wider frame */
+  margin: 0 auto 40px;
+  padding-top: 70%;    /* taller ratio for readability */
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+}
 
-    /* YouTube Embed - medium */
-    .video-box {
-      position: relative;
-      width: 95%;             
-      max-width: 700px;       
-      margin: 0 auto 40px;    
-      padding-top: 50%;       
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
-    }
+/* YouTube Embed - medium */
+.video-box {
+  position: relative;
+  width: 95%;
+  max-width: 700px;
+  margin: 0 auto 40px;
+  padding-top: 56.25%; /* true 16:9 aspect ratio */
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+}
 
-    /* Iframe */
-    iframe {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
+/* Iframe */
+iframe {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
 
-    /* About section text alignment */
-    .about-section,
-    .about-section * {
-      text-align: left !important;
-    }
+/* Dashboard snippet images */
+.about-section img {
+  display: inline-block;
+  max-width: 300px;
+  height: auto;
+  margin: 0 15px 15px 0;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  vertical-align: top;
+}
 
-    /* Dashboard snippet images */
-    .about-section img {
-      display: inline-block;
-      max-width: 300px;
-      height: auto;
-      margin: 0 15px 15px 0;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-      vertical-align: top;
-    }
+/* Dark Mode */
+html.dark-mode {
+  background-color: #121212 !important;
+  color: #eee !important;
+}
 
-    /* Dark Mode */
-    html.dark-mode, html.dark-mode body {
-      background-color: #121212 !important;
-      color: #eee !important;
-    }
+html.dark-mode h1,
+html.dark-mode h2,
+html.dark-mode h3 {
+  color: #fff !important;
+}
 
-    html.dark-mode h1,
-    html.dark-mode h2,
-    html.dark-mode h3 {
-      color: #fff !important;
-    }
+html.dark-mode .header {
+  background-color: #004424 !important;
+  color: #eee !important;
+}
 
-    html.dark-mode .header {
-      background-color: #004424 !important;
-      color: #eee !important;
-    }
+html.dark-mode a {
+  color: #70eec4 !important;
+}
 
-    html.dark-mode a {
-      color: #70eec4 !important;
-    }
+html.dark-mode .home-button {
+  background-color: #016327 !important;
+  color: #fff !important;
+}
 
-    html.dark-mode .home-button {
-      background-color: #016327 !important;
-      color: #fff !important;
-    }
+html.dark-mode .container,
+html.dark-mode .container * {
+  color: #e6e6e6 !important;
+}
 
-    html.dark-mode .container,
-    html.dark-mode .container * {
-      color: #e6e6e6 !important;
-    }
+html.dark-mode .container [style*="background: #fff"],
+html.dark-mode .container [style*="background:#fff"],
+html.dark-mode .container [style*="background:rgb(255,255,255)"] {
+  background-color: #1e1e1e !important;
+  color: #e6e6e6 !important;
+}
 
-    html.dark-mode .container [style*="background: #fff"],
-    html.dark-mode .container [style*="background:#fff"],
-    html.dark-mode .container [style*="background:rgb(255,255,255)"] {
-      background-color: #1e1e1e !important;
-      color: #e6e6e6 !important;
-    }
+html.dark-mode .about-section,
+html.dark-mode .about-section * {
+  color: #e6e6e6 !important;
+  background-color: transparent !important;
+}
 
-    html.dark-mode .about-section,
-    html.dark-mode .about-section * {
-      color: #e6e6e6 !important;
-      background-color: transparent !important;
-    }
+html.dark-mode .embed-box,
+html.dark-mode .video-box {
+  box-shadow: 0 0 15px rgba(255,255,255,0.05) !important;
+  border: 1px solid rgba(255,255,255,0.08) !important;
+}
 
-    html.dark-mode .embed-box,
-    html.dark-mode .video-box {
-      box-shadow: 0 0 15px rgba(255,255,255,0.03) !important;
-      border: 1px solid rgba(255,255,255,0.03) !important;
-    }
+html.dark-mode footer {
+  background-color: #000 !important;
+  color: #bbb !important;
+  border-top-color: #444 !important;
+}
 
-    html.dark-mode footer {
-      background-color: #000 !important;
-      color: #bbb !important;
-      border-top-color: #444 !important;
-    }
+/* Toggle Button */
+.toggle-theme {
+  text-align: center;
+  margin: 20px auto;
+}
 
-    /* Toggle Button */
-    .toggle-theme {
-      text-align: center;
-      margin: 20px auto;
-    }
+.toggle-theme button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  background-color: #00b679;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+}
 
-    .toggle-theme button {
-      padding: 10px 20px;
-      border: none;
-      border-radius: 8px;
-      background-color: #00b679;
-      color: white;
-      font-size: 1rem;
-      cursor: pointer;
-    }
+/* Footer */
+footer {
+  background-color: #1a1918;
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+  font-size: 0.9rem;
+  border-top: 2px solid #945605;
+}
 
-    /* Footer */
-    footer {
-      margin-top: auto;
-      background-color: #1a1918;
-      color: #fff;
-      text-align: center;
-      padding: 20px;
-      font-size: 0.9rem;
-      border-top: 2px solid #945605;
-    }
+footer a {
+  color: #f2a154;
+  text-decoration: none;
+  font-weight: 600;
+}
 
-    footer a {
-      color: #f2a154;
-      text-decoration: none;
-      font-weight: 600;
-    }
+footer a:hover {
+  color: #db874d;
+}
 
-    footer a:hover {
-      color: #db874d;
-    }
   </style>
 </head>
 <body>
