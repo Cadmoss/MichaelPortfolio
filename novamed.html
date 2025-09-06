@@ -67,20 +67,25 @@
       color: white;
     }
 
-    /* Container */
-.container {
-  max-width: 900px;
-  margin: 40px auto;
-  padding: 20px;
+    /* Power BI Embed - larger */
+.embed-box {
+  position: relative;
+  width: 100%;            /* take full width of container */
+  max-width: 900px;       /* wider cap */
+  margin: 0 auto 40px;    /* center it */
+  padding-top: 56.25%;    /* 16:9 aspect ratio */
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
 }
 
-/* Embeds */
-.embed-box, .video-box {
+/* YouTube Embed - medium */
+.video-box {
   position: relative;
-  width: 95%;             /* smaller than full screen */
+  width: 95%;             /* slightly smaller */
   max-width: 700px;       /* medium size cap */
   margin: 0 auto 40px;    /* center it */
-  padding-top: 50%;       /* aspect ratio (50% ~ 16:9 but less tall) */
+  padding-top: 50%;       /* not too tall */
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
@@ -90,7 +95,7 @@
 iframe {
   position: absolute;
   top: 0; left: 0;
-  width: 100%;           /* make iframe fit parent */
+  width: 100%;
   height: 100%;
   border: none;
 }
