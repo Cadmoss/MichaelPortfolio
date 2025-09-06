@@ -112,61 +112,52 @@ iframe {
       vertical-align: top;
     }
 
-    /* Dark Mode */
-    .dark-mode {
-      background-color: #121212;
-      color: #eee;
-    }
+    * Dark Mode */
+.dark-mode,
+.dark-mode html,
+.dark-mode body {
+  background-color: #121212;
+  color: #eee;
+}
 
-    .dark-mode .header {
-      background-color: #004424;
-    }
+/* Headings in dark mode */
+.dark-mode h1, 
+.dark-mode h2, 
+.dark-mode h3 {
+  color: #fff;
+}
 
-    .dark-mode a {
-      color: #70eec4;
-    }
+/* Header */
+.dark-mode .header {
+  background-color: #004424;
+  color: #eee;
+}
 
-    .dark-mode .home-button {
-      background-color: #016327;
-      color: #fff;
-    }
+/* Links */
+.dark-mode a {
+  color: #70eec4;
+}
 
-    /* Toggle Button */
-    .toggle-theme {
-      text-align: center;
-      margin: 20px auto;
-    }
+/* Home button */
+.dark-mode .home-button {
+  background-color: #016327;
+  color: #fff;
+}
 
-    .toggle-theme button {
-      padding: 10px 20px;
-      border: none;
-      border-radius: 8px;
-      background-color: #00b679;
-      color: white;
-      font-size: 1rem;
-      cursor: pointer;
-    }
+/* Cards & Highlight Boxes */
+.dark-mode .about-section div,
+.dark-mode .about-section,
+.dark-mode .container div {
+  background-color: #1e1e1e !important;
+  color: #eee;
+}
 
-    /* Footer */
-    footer {
-      margin-top: auto;
-      background-color: #1a1918;
-      color: #fff;
-      text-align: center;
-      padding: 20px;
-      font-size: 0.9rem;
-      border-top: 2px solid #945605;
-    }
-
-    footer a {
-      color: #f2a154;
-      text-decoration: none;
-      font-weight: 600;
-    }
-
-    footer a:hover {
-      color: #db874d;
-    }
+/* Footer */
+.dark-mode footer {
+  background-color: #000;
+  color: #bbb;
+  border-top: 2px solid #444;
+}
   </style>
 </head>
 <body>
@@ -316,8 +307,9 @@ Consistent monthly inflows ensure cash flow stability, but negative shifts highl
 
   <script>
     document.getElementById("darkModeToggle").addEventListener("click", function() {
-      document.body.classList.toggle("dark-mode");
-    });
+  document.documentElement.classList.toggle("dark-mode");
+  document.body.classList.toggle("dark-mode");
+});
   </script>
 
 </body>
