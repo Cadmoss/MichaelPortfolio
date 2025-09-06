@@ -68,37 +68,37 @@
     }
 
     /* Power BI Embed - larger */
-.embed-box {
-  position: relative;
-  width: 100%;            /* take full width of container */
-  max-width: 900px;       /* wider cap */
-  margin: 0 auto 40px;    /* center it */
-  padding-top: 56.25%;    /* 16:9 aspect ratio */
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
-}
+    .embed-box {
+      position: relative;
+      width: 100%;            
+      max-width: 1100px;      /* increased from 900px to make it larger */
+      margin: 0 auto 40px;    
+      padding-top: 56.25%;    /* 16:9 aspect ratio */
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+    }
 
-/* YouTube Embed - medium */
-.video-box {
-  position: relative;
-  width: 95%;             /* slightly smaller */
-  max-width: 700px;       /* medium size cap */
-  margin: 0 auto 40px;    /* center it */
-  padding-top: 50%;       /* not too tall */
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
-}
+    /* YouTube Embed - medium */
+    .video-box {
+      position: relative;
+      width: 95%;             
+      max-width: 700px;       
+      margin: 0 auto 40px;    
+      padding-top: 50%;       
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+    }
 
-/* Iframe */
-iframe {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%;
-  height: 100%;
-  border: none;
-}
+    /* Iframe */
+    iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
 
     /* About section text alignment */
     .about-section,
@@ -117,74 +117,61 @@ iframe {
       vertical-align: top;
     }
 
-    /* Dark Mode
-       -------------------------
-       Use html.dark-mode so we only need to add the class to the <html>.
-       We apply !important to override inline styles (e.g. background:#fff)
-    */
-html.dark-mode, html.dark-mode body {
-  background-color: #121212 !important;
-  color: #eee !important;
-}
+    /* Dark Mode */
+    html.dark-mode, html.dark-mode body {
+      background-color: #121212 !important;
+      color: #eee !important;
+    }
 
-/* Headings in dark mode */
-html.dark-mode h1,
-html.dark-mode h2,
-html.dark-mode h3 {
-  color: #fff !important;
-}
+    html.dark-mode h1,
+    html.dark-mode h2,
+    html.dark-mode h3 {
+      color: #fff !important;
+    }
 
-/* Header */
-html.dark-mode .header {
-  background-color: #004424 !important;
-  color: #eee !important;
-}
+    html.dark-mode .header {
+      background-color: #004424 !important;
+      color: #eee !important;
+    }
 
-/* Links */
-html.dark-mode a {
-  color: #70eec4 !important;
-}
+    html.dark-mode a {
+      color: #70eec4 !important;
+    }
 
-/* Home button */
-html.dark-mode .home-button {
-  background-color: #016327 !important;
-  color: #fff !important;
-}
+    html.dark-mode .home-button {
+      background-color: #016327 !important;
+      color: #fff !important;
+    }
 
-/* Ensure container and its children show light text (override inline colors) */
-html.dark-mode .container,
-html.dark-mode .container * {
-  color: #e6e6e6 !important;
-}
+    html.dark-mode .container,
+    html.dark-mode .container * {
+      color: #e6e6e6 !important;
+    }
 
-/* Override snippet cards and any inline white backgrounds */
-html.dark-mode .container [style*="background: #fff"],
-html.dark-mode .container [style*="background:#fff"],
-html.dark-mode .container [style*="background:rgb(255,255,255)"] {
-  background-color: #1e1e1e !important;
-  color: #e6e6e6 !important;
-}
+    html.dark-mode .container [style*="background: #fff"],
+    html.dark-mode .container [style*="background:#fff"],
+    html.dark-mode .container [style*="background:rgb(255,255,255)"] {
+      background-color: #1e1e1e !important;
+      color: #e6e6e6 !important;
+    }
 
-/* Ensure about-section elements are readable */
-html.dark-mode .about-section,
-html.dark-mode .about-section * {
-  color: #e6e6e6 !important;
-  background-color: transparent !important;
-}
+    html.dark-mode .about-section,
+    html.dark-mode .about-section * {
+      color: #e6e6e6 !important;
+      background-color: transparent !important;
+    }
 
-/* Make embed boxes a little gentler in dark */
-html.dark-mode .embed-box,
-html.dark-mode .video-box {
-  box-shadow: 0 0 15px rgba(255,255,255,0.03) !important;
-  border: 1px solid rgba(255,255,255,0.03) !important;
-}
+    html.dark-mode .embed-box,
+    html.dark-mode .video-box {
+      box-shadow: 0 0 15px rgba(255,255,255,0.03) !important;
+      border: 1px solid rgba(255,255,255,0.03) !important;
+    }
 
-/* Footer */
-html.dark-mode footer {
-  background-color: #000 !important;
-  color: #bbb !important;
-  border-top-color: #444 !important;
-}
+    html.dark-mode footer {
+      background-color: #000 !important;
+      color: #bbb !important;
+      border-top-color: #444 !important;
+    }
 
     /* Toggle Button */
     .toggle-theme {
