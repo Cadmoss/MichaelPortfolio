@@ -68,30 +68,32 @@
     }
 
     /* Container */
-    .container {
-      max-width: 900px;
-      margin: 40px auto;
-      padding: 20px;
-    }
+.container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+}
 
-    /* Embeds */
-    .embed-box, .video-box {
-      position: relative;
-      width: 90%;
-      padding-top: 56.25%;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
-      margin-bottom: 40px;
-    }
+/* Embeds */
+.embed-box, .video-box {
+  position: relative;
+  width: 90%;             /* smaller than full screen */
+  max-width: 700px;       /* medium size cap */
+  margin: 0 auto 40px;    /* center it */
+  padding-top: 50%;       /* aspect ratio (50% ~ 16:9 but less tall) */
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+}
 
-    iframe {
-      position: absolute;
-      top: 0; left: 0;
-      width: 90%;
-      height: 100%;
-      border: none;
-    }
+/* Iframe */
+iframe {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;           /* make iframe fit parent */
+  height: 100%;
+  border: none;
+}
 
     /* About section text alignment */
     .about-section,
