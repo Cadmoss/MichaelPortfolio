@@ -6,151 +6,200 @@
   <title>Smart Project Progress Tracking</title>
   <style>
     body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #4ef7b6;
-      transition: background-color 0.3s, color 0.3s;
-    }
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #4ef7b6;
+  color: #1f2020;
+  transition: background-color 0.3s, color 0.3s;
+}
 
-    .header {
-      background-color: #03471d;
-      color: white;
-      padding: 30px;
-      text-align: center;
-    }
+.header {
+  background-color: #03471d;
+  color: white;
+  padding: 30px;
+  text-align: center;
+}
 
-    .header-top {
-      display: flex;
-      justify-content: flex-start;
-      margin-bottom: 10px;
-    }
+.header-top {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 10px;
+}
 
-    .home-button {
-      background-color: #085006;
-      color: #003845;
-      text-decoration: none;
-      padding: 8px 16px;
-      border-radius: 6px;
-      font-size: 1rem;
-      font-weight: 500;
-      transition: background-color 0.3s ease;
-    }
+.home-button {
+  background-color: #085006;
+  color: #003845;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
 
-    .home-button:hover {
-      background-color: #2732ca;
-      color: white;
-    }
+.home-button:hover {
+  background-color: #2732ca;
+  color: white;
+}
 
-    .header h1 {
-      margin: 0;
-      font-size: 2.2rem;
-    }
+.header h1 {
+  margin: 0;
+  font-size: 2.2rem;
+}
 
-    .container {
-      max-width: 1200px;
-      margin: 40px auto;
-      padding: 20px;
-    }
+.container {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 20px;
+}
 
-    .embed-box, .video-box {
-      position: relative;
-      width: 100%;
-      padding-top: 56.25%;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
-      margin-bottom: 40px;
-    }
+.embed-box, .video-box {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+  margin-bottom: 40px;
+}
 
-    iframe {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
+iframe {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
 
-    .dark-mode {
-      background-color: #121212;
-      color: #ffffff;
-    }
+/* Dark Mode */
+.dark-mode {
+  background-color: #121212;
+  color: #ffffff;
+}
 
-    .dark-mode .header {
-      background-color: #298803;
-    }
+.dark-mode .header {
+  background-color: #298803;
+  color: #ffffff;
+}
 
-    .dark-mode .home-button {
-      background-color: #225302;
-      color: #fff;
-    }
+.dark-mode .home-button {
+  background-color: #225302;
+  color: #fff;
+}
 
-    .toggle-theme {
-      text-align: center;
-      margin: 20px auto;
-    }
+.dark-mode h1,
+.dark-mode h2,
+.dark-mode h3,
+.dark-mode p,
+.dark-mode strong,
+.dark-mode li {
+  color: #ffffff;
+}
 
-    .toggle-theme button {
-      padding: 10px 20px;
-      border: none;
-      border-radius: 8px;
-      background-color: #0077b6;
-      color: rgb(7, 7, 7);
-      font-size: 1rem;
-      cursor: pointer;
-    }
+.dark-mode .notes-section {
+  color: #e0e0e0;
+}
 
-    /* Notes Section Styling */
-    .notes-section {
-      margin-top: 60px;
-      padding: 0 10px;
-      color: #1f2020;
-      line-height: 1.7;
-    }
+.dark-mode .notes-section h2,
+.dark-mode .notes-section h3 {
+  color: #ffffff;
+}
 
-    .notes-section h2 {
-      font-size: 1.8rem;
-      margin-bottom: 20px;
-      color: #000000;
-    }
+.dark-mode .container {
+  color: #ffffff;
+}
 
-    .notes-section h3 {
-      font-size: 1.3rem;
-      margin-top: 40px;
-      margin-bottom: 10px;
-      color: #000000;
-    }
+.dark-mode .embed-box,
+.dark-mode .video-box,
+.dark-mode .responsive-chart {
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+}
 
-    .notes-section p {
-      margin-bottom: 20px;
-    }
+.dark-mode .snippet-box {
+  background-color: #1e1e1e;
+  color: #f1f1f1;
+}
 
-    /* Chart/Graph Image Styling with Zoom */
-    .responsive-chart {
-      max-width: 100%;
-      height: auto;
-      margin: 20px 0;
-      display: block;
-      border-radius: 6px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      cursor: pointer;
-      transition: transform 0.3s ease;
-    }
+.dark-mode footer {
+  background-color: #1f1f1f;
+  color: #ccc;
+}
 
-    .responsive-chart.zoomed {
-      transform: scale(2);
-      z-index: 999;
-      position: relative;
-      cursor: zoom-out;
-    }
+.dark-mode footer a {
+  color: #80dfff;
+}
 
-    @media (max-width: 768px) {
-      .responsive-chart.zoomed {
-        transform: scale(1.5);
-      }
-    }
+.dark-mode footer a:hover {
+  color: #ffb3b3;
+}
 
- /* Back to Top Button */
-    .back-to-top {
+.toggle-theme {
+  text-align: center;
+  margin: 20px auto;
+}
+
+.toggle-theme button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  background-color: #0077b6;
+  color: #070707;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+/* Notes Section Styling */
+.notes-section {
+  margin-top: 60px;
+  padding: 0 10px;
+  line-height: 1.7;
+  color: #1f2020;
+}
+
+.notes-section h2 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  color: #000000;
+}
+
+.notes-section h3 {
+  font-size: 1.3rem;
+  margin-top: 40px;
+  margin-bottom: 10px;
+  color: #000000;
+}
+
+.notes-section p {
+  margin-bottom: 20px;
+}
+
+/* Chart/Graph Image Styling with Zoom */
+.responsive-chart {
+  max-width: 100%;
+  height: auto;
+  margin: 20px 0;
+  display: block;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.responsive-chart.zoomed {
+  transform: scale(2);
+  z-index: 999;
+  position: relative;
+  cursor: zoom-out;
+}
+
+@media (max-width: 768px) {
+  .responsive-chart.zoomed {
+    transform: scale(1.5);
+  }
+}
+
+/* Back to Top Button */
+.back-to-top {
   position: fixed;
   bottom: 25px;
   right: 25px;
@@ -183,7 +232,8 @@
   transform: translateY(-4px);
 }
 
-    footer {
+/* Footer */
+footer {
   background-color: #006305;
   color: #fff;
   text-align: center;
@@ -382,7 +432,7 @@ footer a:hover {
   </script>
 
 <footer>
-  <p>© 2025 Healthcare Economics | Designed & Developed by <strong>Michael Afolayan</strong></p>
+  <p>© 2025 Smart Project Progress Tracking | Designed & Developed by <strong>Michael Afolayan</strong></p>
   <p>
     <a href="mailto:michaelcadmoss@gmail.com">Contact</a> | 
     <a href="https://www.linkedin.com/in/michael-afolayann" target="_blank">LinkedIn</a>
