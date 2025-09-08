@@ -1,9 +1,10 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>My Web Page</title>
+<title>Job Application Tracker</title>
 <style>
 body {
 font-family: Arial, sans-serif;
@@ -16,11 +17,12 @@ header {
 background: #333;
 color: #fff;
 padding: 1rem;
-text-align: center;
+display: flex;
+align-items: center;
+justify-content: space-between;
 }
 nav {
-text-align: center;
-margin: 1rem 0;
+margin-left: 1rem;
 }
 nav a {
 text-decoration: none;
@@ -47,6 +49,17 @@ margin: 1rem auto;
 border: none;
 border-radius: 10px;
 }
+.video-section a {
+display: block;
+text-align: center;
+margin-top: 0.5rem;
+color: #007BFF;
+font-weight: bold;
+text-decoration: none;
+}
+.video-section a:hover {
+text-decoration: underline;
+}
 .notes-section {
 background: #fff;
 padding: 1rem;
@@ -67,13 +80,11 @@ margin-top: 2rem;
 
 
 <header>
-<h1>My Web Page Title</h1>
-</header>
-
-
 <nav>
 <a href="#">Home</a>
 </nav>
+<h1>My Web Page Title</h1>
+</header>
 
 
 <section class="image-section">
@@ -85,6 +96,7 @@ margin-top: 2rem;
 <section class="video-section">
 <h2>Video Section</h2>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+<a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">CHECK IT OUT</a>
 </section>
 
 
