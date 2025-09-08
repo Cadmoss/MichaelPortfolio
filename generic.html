@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NHTSA Dashboard Presentation</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: url('images/ihwal-hambali-rH_lxr44wZo-unsplash.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #0d0e0e;
+    }
+
+    .overlay {
+      background-color: rgba(0, 0, 0, 0.6);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 20px;
+    }
+
+    .content-box {
+      background-color: rgba(8, 8, 8, 0.95);
+      color: #fdfcfc;
+      max-width: 900px;
+      width: 100%;
+      padding: 40px 30px;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+    }
+
+    .header-row {
+      display: flex;
+      justify-content: flex-start;
+      margin-bottom: 20px;
+    }
+
+    .home-button {
+      background-color: #bf8b4b;
+      color: #fff;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: 600;
+      transition: background 0.3s ease;
+    }
+
+    .home-button:hover {
+      background-color: #8a6233;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 30px;
+    }
+
+    .dashboard {
+      width: 100%;
+      height: 500px;
+      background-color: #063a40;
+      border-radius: 10px;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+
+    .dashboard img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .notes {
+      margin-bottom: 30px;
+    }
+
+    .notes h3 {
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+      color: #f8fafa;
+    }
+
+    .notes p {
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    .download-link {
+      text-align: center;
+    }
+
+    .download-link a {
+      background-color: #bf8b4b;
+  color: #fff;
+  padding: 14px 24px;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: background 0.3s ease;
+  display: inline-block;
+  max-width: 100%;
+  text-align: center;
+  word-wrap: break-word;
+}
+    .download-link a:hover {
+      background-color: #8a6233;
+    }
+
+    @media (max-width: 768px) {
+      .dashboard {
+        height: 300px;
+      }
+
+      h1 {
+        font-size: 1.6rem;
+      }
+
+      .notes h3 {
+        font-size: 1.2rem;
+	  }
+
+  .download-link a {
+    font-size: 0.95rem;
+    padding: 12px 20px;
+    width: 100%;
+    max-width: 100%;
+
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay">
+    <div class="content-box">
+
+      <div class="header-row">
+        <a href="Archive.html" class="home-button">Home</a>
+      </div>
+
+      <h1>NHTSA Vehicle Recalls Analysis</h1>
+
+      <div class="dashboard">
+        <img src="images/NHTSA.PNG" alt="NHTSA Dashboard" />
+      </div>
+
+      <div class="notes">
+        <h3>Presentation Notes</h3>
+        <p>
+          This project is a comprehensive 25-year analysis (2000-2025) of vehicle recall data in United States, sourced from Data.gov using a combination of SQL for querying and Microsoft Excel for data visualization, I meticulously cleaned and procesed thousands of records to uncover key patterns and actionable insights.
+		  This goal of this analysis is to identify trends in vehicle recalls across manufacturers, vehicle types, and defect categories over the past two and a half decades. Through advanced query techniques, I extracted deep insights from raw data, which are presented through an interractive dashboard that allow users to explore recall trends year by year, and also a PDF presentation of this analysis.
+		  Whether you are a customer, researcher, or auomobile saftey advocate, this tool aims to bring clarity to historical recall data and support informed decision-making in the automotive space.
+        </p>
+      </div>
+
+      <div class="download-link">
+        <a href="presentation.pdf" download>Download PDF Presentation</a>
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>
